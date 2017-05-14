@@ -1,0 +1,24 @@
+.custom-navbar{
+    color: #FFFFFF;
+    background-color: #0A0A32;
+}
+
+.custom-navbar > div > ul > li {
+    color: #FFF
+}
+
+.custom-navbar > div > ul >  li > a {
+    color: #FFF
+}
+
+
+main {
+    padding-top: 30px;
+}
+
+/* HEADER
+======================= */
+header .navbar {
+
+    border-radius: 0;
+}
