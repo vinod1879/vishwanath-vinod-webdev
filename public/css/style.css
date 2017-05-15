@@ -11,6 +11,10 @@
     color: #FFF
 }
 
+.custom-navbar > div > ul > li:hover > a {
+    color: #0A0A32;
+}
+
 
 main {
     padding-top: 30px;
