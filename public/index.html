@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Web Dev Course Home Page</title>
 
+    <!-- FOR ANGULAR ROUTING -->
+    <base href="/">
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -24,36 +27,32 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.js"></script>
+    <script src="app.js"></script>
+    <script src="app.routes.js"></script>
 </head>
-<body>
+<body ng-app="WebDevApp">
     <header>
         <div class="navbar custom-navbar" role="navigation">
             <div class="container">
-                <!--<div class="navbar-header">-->
-                    <!--<a class="logo">-->
-                        <!--<img src="assets\img\logo.png">-->
-                    <!--</a>-->
-                <!--</div>-->
                 <ul class="nav navbar-nav">
                     <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
                     <li><h class="navbar-brand custom-navbar">CS5610: Web Dev</h></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="project/index.html">Project</a></li>
-                    <li><a href="assignment/index.html">Assignment</a></li>
-                    <li><a href="test/index.html">Test MongoDB</a></li>
+                    <li><a href="/project">Project</a></li>
+                    <li><a href="/assignment/">Assignment</a></li>
+                    <li><a href="/test/">Test MongoDB</a></li>
                     <li><a href="https://github.com/vinod1879/vishwanath-vinod-webdev">GitHub Repository</a></li>
                 </ul>
             </div>
         </div>
     </header>
-    <div class="container">
-        <h1>Vinod's Web Development Home</h1>
-
-        <p>Hello and welcome to my home page! Here is where I will show case my assignments <br>
-            and project for CS5610, Web Development, at Northeastern University for the Summer-1 <br>
-            Semester of 2017.
-        </p>
-    </div>
+    <main class="container">
+        <!-- ANGULAR VIEWS -->
+        <div ng-view></div>
+    </main>
 </body>
 </html>
