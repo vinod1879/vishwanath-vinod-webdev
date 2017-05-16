@@ -33,7 +33,7 @@
     }
 
     function testRoute() {
-        return makeRoute('test/index.html');
+        return makeRoute('test/index.html', 'TestController', 'model');
     }
 
     function makeRoute(path, controller, alias) {
