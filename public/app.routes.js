@@ -8,9 +8,9 @@
 
         $routeProvider
             .when('/', homeRoute())
-            .when('/assignment', assignmentRoute())
-            .when('/project', projectRoute())
-            .when('/test', testRoute());
+            .when('/assignment-home', assignmentRoute())
+            .when('/project-home', projectRoute())
+            .when('/test-home', testRoute());
 
         $locationProvider.html5Mode(true);
         console.log('Routes Configured!');
@@ -21,19 +21,19 @@
      */
 
     function homeRoute() {
-        return makeRoute('/home/index.html');
+        return makeRoute('home/home.html');
     }
     
     function assignmentRoute() {
-        return makeRoute('/assignment/index.html');
+        return makeRoute('home/assignment.html');
     }
 
     function projectRoute() {
-        return makeRoute('project/index.html');
+        return makeRoute('home/project.html');
     }
 
     function testRoute() {
-        return makeRoute('test/index.html', 'TestController', 'model');
+        return makeRoute('home/test.html');
     }
 
     function makeRoute(path, controller, alias) {
