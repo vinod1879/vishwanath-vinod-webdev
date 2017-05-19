@@ -5,3 +5,19 @@ input.form-control {
 body {
     padding-top: 36px;
 }
+
+.wbd-form-login {
+    max-width: 500px;
+    margin-top: 20px;
+}
+
+.wbd-form-login > a,
+.wbd-form-login > p {
+    margin-top: 10px;
+}
+
+.wbd-form-login > p {
+    min-height: 50px;
+    border-radius: 4px;
+    padding: 15px;
+}

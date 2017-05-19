@@ -2,23 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale-1, maximum-scale=1, user-scalable=no">
+    <title>WebApp Login</title>
+    <link href="../vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link href="css/style.css"
+          rel="stylesheet"/>
 </head>
 <body>
     <div class="container">
-        <h1>Login</h1>
-        <input type="text"
-               class="form-control"
-               placeholder="username"/>
-        <input type="password"
-               class="form-control"
-               placeholder="password"/>
-        <a class="btn btn-primary btn-block"
-           href="profile.html">Login</a>
-        <a class="btn btn-success btn-block"
-           href="register.html">Register</a>
+        <h1 class="text-center">Login to WebApp Maker</h1>
+        <form class="wbd-form-login center-block">
+            <input type="text"
+                   class="form-control"
+                   placeholder="username"/>
+            <input type="password"
+                   class="form-control"
+                   placeholder="password"/>
+            <a class="btn btn-primary btn-block"
+               href="profile.html">Login</a>
+            <p class="text-center table-bordered">
+                New user?<a  href="register.html"> Register now! </a>
+            </p>
+        </form>
     </div>
 </body>
 </html>
