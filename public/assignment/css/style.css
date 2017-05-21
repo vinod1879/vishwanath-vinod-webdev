@@ -58,3 +58,20 @@ body {
 .wbd-page-content a {
     margin-top: 10px;
 }
+
+.wbd-widget {
+    margin-bottom: 10px;
+}
+
+.wbd-widget > .wbd-widget-toolbar {
+    position: absolute;
+    right: 15px;
+    background: white;
+    opacity: 0.9;
+    padding: 15px;
+    border-bottom-left-radius: 10px;
+}
+
+.wbd-widget p {
+    margin-right:50px;
+}
