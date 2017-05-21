@@ -75,3 +75,11 @@ body {
 .wbd-widget p {
     margin-right:50px;
 }
+
+.wbd-page-content .list-group .list-inline {
+    margin-top: 5px;
+}
+
+.wbd-page-content.container {
+    margin-left: 16px;
+}

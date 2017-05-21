@@ -2,9 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Widget Image</title>
+    <link href="../../vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link href="../css/style.css"
+          rel="stylesheet">
 </head>
 <body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Widget Image
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="widget-chooser.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid wbd-page-content">
+
+    <label for="name">Name</label>
+    <input type="text"
+           class="form-control"
+           placeholder=""
+           id="name" />
+
+    <label for="text">Text</label>
+    <input type="text"
+           class="form-control"
+           placeholder=""
+           id="text" />
+
+    <label for="widgetURL">URL</label>
+    <input type="text"
+           class="form-control"
+           placeholder=""
+           id="widgetURL" />
+
+    <label for="width">Width</label>
+    <input type="text"
+           class="form-control"
+           placeholder=""
+           id="width" />
+
+    <label for="file">Upload</label>
+    <input type="file"
+           class="form-control"
+           placeholder=""
+           id="file" />
+
+    <a class="btn btn-block btn-primary" href="#">Upload Image</a>
+    <a class="btn btn-block btn-danger" href="#">Delete</a>
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <p class="navbar-text pull-right">
+        <a href="../user/profile.html" class="navbar-link">
+            <span class="glyphicon glyphicon-user"></span>
+        </a>
+    </p>
+</nav>
 
 </body>
 </html>
