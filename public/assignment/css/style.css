@@ -50,3 +50,11 @@ body {
 .container > form > .btn {
     margin-top: 30px;
 }
+
+.wbd-page-content {
+    margin-top: 30px;
+}
+
+.wbd-page-content a {
+    margin-top: 10px;
+}
