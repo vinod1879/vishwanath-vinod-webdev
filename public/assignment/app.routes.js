@@ -1,11 +1,10 @@
-(function(){
-
+(function () {
     angular
         .module('app.routes', ['ngRoute'])
-        .config(routeConfig)
+        .config(config)
         .config(locationConfig);
-
-    function routeConfig($routeProvider) {
+    
+    function config($routeProvider, $locationProvider) {
 
         $routeProvider
             .when('/', homeRoute())
@@ -27,7 +26,7 @@
     function homeRoute() {
         return makeRoute('home/home.html');
     }
-    
+
     function assignmentRoute() {
         return makeRoute('home/assignment.html');
     }
