@@ -11,8 +11,10 @@
          */
         this.createUser = createUser;
         this.findUserById = findUserById;
-        this.findUserByUsername = findUserByName;
+        this.findUserByUsername = findUserByUsername;
         this.findUserByCredentials = findUserByCredentials;
+        this.updateUser = updateUser;
+        this.deleteUser = deleteUser;
 
 
         /**
@@ -26,7 +28,7 @@
             return user;
         }
 
-        function findUserByName(username) {
+        function findUserByUsername(username) {
             var user = users.find(function(user) {
                 return user.username === username;
             });
@@ -56,6 +58,20 @@
                 }
             }
             return null;
+        }
+
+        function updateUser(userId, user) {
+            var oldUser = findUserById(userId);
+            var index = users.indexOf(oldUser);
+
+            users[index] = user;
+        }
+
+        function deleteUser(userId) {
+            var user = findUserById(userId);
+            var index = users.indexOf(user);
+
+            users.splice(index, 1);
         }
     }
 

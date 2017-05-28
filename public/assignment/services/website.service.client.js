@@ -8,10 +8,12 @@
         this.createWebsite = createWebsite;
         this.deleteWebsite = deleteWebsite;
         this.findWebsiteById = findWebsiteById;
-        this.findWebsitesForUser = findAllWebsitesofUser;
+        this.findWebsitesForUser = findAllWebsitesByUser;
+        this.updateWebsite = updateWebsite;
 
-        function createWebsite(website) {
+        function createWebsite(userId, website) {
             website._id = (new Date()).getTime() + "";
+            website.developerId = userId;
             websites.push(website)
         }
 
@@ -27,7 +29,7 @@
             });
         }
 
-        function findAllWebsitesofUser(userId) {
+        function findAllWebsitesByUser(userId) {
             var results = [];
 
             for (var i in websites) {
@@ -38,6 +40,14 @@
             }
 
             return results;
+        }
+
+        function updateWebsite(websiteId, website) {
+
+            var previous = findWebsiteById(websiteId);
+            var index = website.indexOf(previous);
+
+            websites[index] = website;
         }
     }
 
