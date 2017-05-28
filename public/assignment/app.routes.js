@@ -1,16 +1,26 @@
 (function () {
     angular
-        .module('app.routes', ['ngRoute'])
-        .config(config)
+        .module('WebAppMaker', ['ngRoute'])
+        .config(routeConfig)
         .config(locationConfig);
     
-    function config($routeProvider, $locationProvider) {
+    function routeConfig($routeProvider) {
 
         $routeProvider
-            .when('/', homeRoute())
-            .when('/assignment-home', assignmentRoute())
-            .when('/project-home', projectRoute())
-            .when('/test-home', testRoute());
+            .when('/assignment/', loginPage())
+            .when('/assignment/login', loginPage())
+            .when('/assignment/register', registrationPage())
+            .when('/assignment/user/:uid', profilePage())
+            .when('/assignment/user/:uid/website', websiteList())
+            .when('/assignment/user/:uid/website/new', websiteNew())
+            .when('/assignment/user/:uid/website/:wid', websiteEdit())
+            .when('/assignment/user/:uid/website/:wid/page', pageList())
+            .when('/assignment/user/:uid/website/:wid/page/new', pageNew())
+            .when('/assignment/user/:uid/website/:wid/page/:pid', pageEdit())
+            .when('/assignment/user/:uid/website/:wid/page/:pid/widget', widgetList())
+            .when('/assignment/user/:uid/website/:wid/page/:pid/widget/new', widgetNew())
+            .when('/assignment/user/:uid/website/:wid/page/:pid/widget/:wgid', widgetEdit())
+            .otherwise(loginPage());
 
         console.log('Routes Configured!');
     }
@@ -23,20 +33,52 @@
      *  Helper Methods to create routes
      */
 
-    function homeRoute() {
-        return makeRoute('home/home.html');
+    function loginPage() {
+        return makeRoute('assignment/views/user/templates/login.view.client.html', 'loginController', 'model');
     }
 
-    function assignmentRoute() {
-        return makeRoute('home/assignment.html');
+    function registrationPage() {
+        return makeRoute('assignment/views/user/templates/register.view.client.html', 'registerController', 'model');
     }
 
-    function projectRoute() {
-        return makeRoute('home/project.html');
+    function profilePage() {
+        return makeRoute('assignment/views/user/templates/profile.view.client.html', 'profileController', 'model');
     }
 
-    function testRoute() {
-        return makeRoute('home/test.html');
+    function websiteList() {
+        return makeRoute('assignment/views/user/templates/profile.html');
+    }
+
+    function websiteNew() {
+        return makeRoute('assignment/views/user/templates/profile.html');
+    }
+
+    function websiteEdit() {
+        return makeRoute('assignment/views/user/templates/profile.html');
+    }
+
+    function pageList() {
+        return makeRoute('assignment/views/user/templates/profile.html');
+    }
+
+    function pageNew() {
+        return makeRoute('assignment/views/user/templates/profile.html');
+    }
+
+    function pageEdit() {
+        return makeRoute('assignment/views/user/templates/profile.html');
+    }
+
+    function widgetList() {
+        return makeRoute('assignment/views/user/templates/profile.html');
+    }
+
+    function widgetNew() {
+        return makeRoute('assignment/views/user/templates/profile.html');
+    }
+
+    function widgetEdit() {
+        return makeRoute('assignment/views/user/templates/profile.html');
     }
 
     function makeRoute(path, controller, alias) {

@@ -16,7 +16,14 @@ require ("./test/app.js")(app);
 
 app.get('*', function(req, res) {
 
-    res.sendFile(path.join(__dirname + '/public/index.html'));
+    console.log(req.originalUrl)
+
+    if (req.originalUrl.includes('assignment')) {
+        res.sendFile(path.join(__dirname + '/public/assignment/index.html'));
+    }
+    else {
+        res.sendFile(path.join(__dirname + '/public/index.html'));
+    }
 });
 
 var port = process.env.PORT || 3000;
