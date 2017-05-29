@@ -2,19 +2,24 @@
 <div class="container">
     <h3 class="text-center">Register</h3>
     <form class="wbd-form-login center-block">
+
+        <div ng-show="model.message" class="alert alert-info">{{model.message}}</div>
         <input type="text"
                class="form-control"
+               ng-model="username"
                placeholder="username"/>
         <input type="password"
                class="form-control"
+               ng-model="password"
                placeholder="password"/>
         <input type="password"
                class="form-control"
+               ng-model="repeat"
                placeholder="verify password"/>
         <a class="btn btn-primary btn-block"
-           href="profile.html">Register</a>
+           href="#" ng-click="model.register(username, password, repeat)">Register</a>
         <p class="text-center table-bordered">
-            Already registered?<a  href="login.html"> Login now! </a>
+            Already registered?<a  href="assignment/login"> Login now! </a>
         </p>
     </form>
 </div>

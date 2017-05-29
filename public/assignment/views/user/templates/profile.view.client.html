@@ -8,7 +8,7 @@
         </div>
         <div class="pull-right">
                 <a class="navbar-brand" href="/assignment/user/{{model.userId}}/website">Websites</a>
-                <a class="navbar-brand" href="login.html">
+                <a class="navbar-brand" href="/">
                     <span class="glyphicon glyphicon-log-out"></span>
                 </a>
         </div>
@@ -24,18 +24,21 @@
         </div>
         <div class="form-group">
             <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+            <input ng-model="model.user.email"
+                   type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
         </div>
         <div class="form-group">
             <label for="first-name">First Name</label>
-            <input type="text" class="form-control" id="first-name" placeholder="Alice">
+            <input ng-model="model.user.firstName"
+                   type="text" class="form-control" id="first-name" placeholder="Alice">
         </div>
         <div class="form-group">
             <label for="last-name">Last Name</label>
-            <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
+            <input ng-model="model.user.lastName"
+                   type="text" class="form-control" id="last-name" placeholder="Wonderland">
         </div>
         <a class="btn btn-primary btn-block"
-           href="../user/profile.html">Update</a>
+           href="#" ng-click="model.updateProfile()">Update</a>
     </form>
 
 </div>

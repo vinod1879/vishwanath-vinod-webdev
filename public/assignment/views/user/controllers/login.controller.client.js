@@ -18,7 +18,7 @@
             var user = userService.findUserByCredentials(username, password);
 
             if (user !== null) {
-                $location.url('/assignment/user/' + user._id);
+                $location.url('/assignment/user/' + user._id + '/website');
             }
             else {
                 model.message = "Sorry! Incorrect username or password.";
