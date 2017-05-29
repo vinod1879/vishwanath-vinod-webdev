@@ -12,7 +12,6 @@
 
         function init() {
             model.websites = websiteService.findWebsitesByUser(model.userId);
-            console.log ("Websites Found: " + model.websites.length);
         }
         init();
 

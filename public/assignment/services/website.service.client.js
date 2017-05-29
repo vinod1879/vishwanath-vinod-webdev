@@ -19,7 +19,7 @@
 
         function deleteWebsite(websiteId) {
             var website = findWebsiteById(websiteId);
-            var index = website.indexOf(website);
+            var index = websites.indexOf(website);
             websites.splice(index, 1);
         }
 
@@ -45,7 +45,7 @@
         function updateWebsite(websiteId, website) {
 
             var previous = findWebsiteById(websiteId);
-            var index = website.indexOf(previous);
+            var index = websites.indexOf(previous);
 
             websites[index] = website;
         }

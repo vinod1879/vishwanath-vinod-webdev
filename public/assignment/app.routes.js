@@ -50,11 +50,11 @@
     }
 
     function websiteNew() {
-        return makeRoute('assignment/views/user/templates/profile.html');
+        return makeRoute('assignment/views/website/templates/website-new.view.client.html', 'WebsiteNewController', 'model');
     }
 
     function websiteEdit() {
-        return makeRoute('assignment/views/user/templates/profile.html');
+        return makeRoute('assignment/views/website/templates/website-edit.view.client.html', 'WebsiteEditController', 'model');
     }
 
     function pageList() {

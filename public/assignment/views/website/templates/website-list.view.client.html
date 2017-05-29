@@ -37,7 +37,7 @@
         <li class="list-group-item" ng-repeat="website in model.websites">
             <div class="row">
                 <div class="col-sm-5 col-xs-6">
-                    <a href="/assignment/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a>
+                    <a href="/assignment/user/{{model.userId}}/website/{{website._id}}">{{website.name}}</a>
                 </div>
                 <div class="col-sm-3 col-xs-5">
                     {{website.createdOn}}
@@ -46,7 +46,7 @@
                     {{website.updatedOn}}
                 </div>
                 <div class="col-xs-1">
-                    <a href="website-edit.html">
+                    <a href="/assignment/user/{{model.userId}}/website/{{website._id}}">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>
@@ -58,7 +58,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="../user/profile.html" class="navbar-link">
+            <a href="/assignment/user/{{model.userId}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </p>
