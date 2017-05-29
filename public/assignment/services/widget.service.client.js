@@ -8,7 +8,7 @@
 
         // API's provied
         this.createWidget = createWidget;
-        this.findWidgetByPageId = findWidgetsByPageId;
+        this.findWidgetsByPageId = findWidgetsByPageId;
         this.findWidgetById = findWidgetById;
         this.updateWidget = updateWidget;
         this.deleteWidget = deleteWidget;

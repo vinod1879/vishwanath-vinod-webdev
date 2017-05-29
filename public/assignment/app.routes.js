@@ -70,7 +70,7 @@
     }
 
     function widgetList() {
-        return makeRoute('assignment/views/user/templates/profile.html');
+        return makeRoute('assignment/views/widget/templates/widget-list.view.client.html', 'WidgetListController', 'model');
     }
 
     function widgetNew() {

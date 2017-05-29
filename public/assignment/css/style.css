@@ -62,6 +62,7 @@ body {
 
 .wbd-widget {
     margin-bottom: 10px;
+    min-height: 50px;
 }
 
 .wbd-widget > .wbd-widget-toolbar {
@@ -71,6 +72,7 @@ body {
     opacity: 0.9;
     padding: 15px;
     border-bottom-left-radius: 10px;
+    z-index: 5;
 }
 
 .wbd-widget p {
