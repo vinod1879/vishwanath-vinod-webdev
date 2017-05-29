@@ -46,7 +46,7 @@
     }
 
     function websiteList() {
-        return makeRoute('assignment/views/user/templates/profile.html');
+        return makeRoute('assignment/views/website/templates/website-list.view.client.html', 'WebsiteListController', 'model');
     }
 
     function websiteNew() {
