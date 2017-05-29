@@ -17,8 +17,14 @@
         function createPage(websiteId, page) {
             page._id = (new Date()).getTime() + "";
             page.websiteId = websiteId;
+            page.createdOn = getDateString(new Date());
+            page.updatedOn = getDateString(new Date());
 
             pages.push(page);
+        }
+
+        function getDateString(date) {
+            return "" + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
         }
 
         function findPagesByWebsiteId(websiteId) {
@@ -43,6 +49,8 @@
         function updatePage(pageId, page) {
             var oldPage = findPageById(pageId);
             var index = pages.indexOf(oldPage);
+
+            page.updatedOn = getDateString(new Date());
 
             pages[index] = page;
         }

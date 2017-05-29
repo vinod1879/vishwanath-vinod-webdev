@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>New Page</title>
-    <link href="../../vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css"
-          rel="stylesheet">
-    <link href="../css/style.css"
-          rel="stylesheet">
-</head>
-<body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="../page/page-list.html">
+            <a class="navbar-brand" href="/assignment/user/{{model.userId}}/website/{{model.websiteId}}/page">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
             <a class="navbar-brand" href="#">
                 New Page
             </a>
             <p class="navbar-text pull-right">
-                <a href="page-list.html" class="navbar-link">
+                <a href="#" class="navbar-link" ng-click="model.createPage()">
                     <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
@@ -35,11 +24,12 @@
             <label for="name">Name</label>
             <input class="form-control"
                    placeholder="Page Name"
-                   value=""
+                   ng-model="model.page.name"
                    id="name"/>
 
             <label for="title">Description</label>
             <input id="title"
+                   ng-model="model.page.description"
                    placeholder="Page Title"
                    class="form-control"/>
         </div>
@@ -49,12 +39,9 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="../user/profile.html" class="navbar-link">
+            <a href="/assignment/user/{{model.userId}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </p>
     </div>
 </nav>
-
-</body>
-</html>

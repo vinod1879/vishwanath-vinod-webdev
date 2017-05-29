@@ -23,12 +23,12 @@
 
         function updatePage() {
             pageService.updatePage(model.pageId, model.page);
-            $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId);
+            $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId) + '/page';
         }
 
         function deletePage() {
             pageService.deletePage(model.pageId);
-            $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId);
+            $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId) + '/page';
         }
     }
 
