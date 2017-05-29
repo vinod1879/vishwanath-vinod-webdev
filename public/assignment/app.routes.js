@@ -58,7 +58,7 @@
     }
 
     function pageList() {
-        return makeRoute('assignment/views/user/templates/profile.html');
+        return makeRoute('assignment/views/page/templates/page-list.view.client.html', 'PageListController', 'model');
     }
 
     function pageNew() {
