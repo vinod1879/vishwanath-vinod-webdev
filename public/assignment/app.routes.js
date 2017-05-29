@@ -62,11 +62,11 @@
     }
 
     function pageNew() {
-        return makeRoute('assignment/views/user/templates/profile.html');
+        return makeRoute('assignment/views/page/templates/page-new.view.client.html', 'PageNewController', 'model');
     }
 
     function pageEdit() {
-        return makeRoute('assignment/views/user/templates/profile.html');
+        return makeRoute('assignment/views/page/templates/page-edit.view.client.html', 'PageEditController', 'model');
     }
 
     function widgetList() {
