@@ -17,7 +17,6 @@
         function updateProfile() {
             userService.updateUser(model.userId, model.user);
             $location.url('/assignment/user/' + model.user._id + '/website');
-            console.log("Updatd!!")
         }
     }
 })();
