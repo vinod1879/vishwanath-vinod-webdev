@@ -29,6 +29,14 @@
         <div ng-include="model.widgetUrl(widget)"></div>
     </div>
 
+    <li class="list-group-item" ng-if="!model.pages || model.pages.length == 0">
+        <div class="row">
+            <div class="col-xs-12">
+                No Widgets
+            </div>
+        </div>
+    </li>
+
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
