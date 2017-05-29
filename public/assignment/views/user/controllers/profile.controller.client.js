@@ -9,10 +9,12 @@
         var model = this;
         model.updateProfile = updateProfile;
 
-        model.userId = $routeParams['uid'];
-        console.log("Updatd!!")
+        init();
 
-        model.user = userService.findUserById(model.userId);
+        function init() {
+            model.userId = $routeParams['uid'];
+            model.user = userService.findUserById(model.userId);
+        }
 
         function updateProfile() {
             userService.updateUser(model.userId, model.user);

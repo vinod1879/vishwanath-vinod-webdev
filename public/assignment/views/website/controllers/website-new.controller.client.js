@@ -9,12 +9,12 @@
         var model = this;
         model.createWebsite = createWebsite;
 
-        model.userId = $routeParams['uid'];
-        model.website = {};
-
         init();
 
         function init() {
+
+            model.userId = $routeParams['uid'];
+            model.website = {};
             model.websites = websiteService.findWebsitesByUser(model.userId);
         }
 

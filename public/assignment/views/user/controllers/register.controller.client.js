@@ -6,9 +6,7 @@
     function registerController($location, userService) {
 
         var model = this;
-        this.register = register;
-
-        model.message = '';
+        model.register = register;
 
         function register(username, password, verifyPassword) {
 

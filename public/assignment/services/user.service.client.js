@@ -6,9 +6,7 @@
 
     function userService() {
 
-        /**
-         * API's provided by userService
-         */
+        // API's provided
         this.createUser = createUser;
         this.findUserById = findUserById;
         this.findUserByUsername = findUserByUsername;
@@ -17,9 +15,7 @@
         this.deleteUser = deleteUser;
 
 
-        /**
-         * Helper Functions
-         */
+        // Helper Functions
         function createUser(user) {
             user._id = (new Date()).getTime() + "";
             user.created = new Date();

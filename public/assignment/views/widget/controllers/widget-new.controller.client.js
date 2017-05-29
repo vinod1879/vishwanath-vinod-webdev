@@ -9,13 +9,14 @@
         var model = this;
         model.createWidget = createWidget;
 
-        model.userId = $routeParams['uid'];
-        model.websiteId = $routeParams['wid'];
-        model.pageId = $routeParams['pid'];
-
         init();
 
         function init() {
+
+            model.userId = $routeParams['uid'];
+            model.websiteId = $routeParams['wid'];
+            model.pageId = $routeParams['pid'];
+
             model.widgetTypes = widgetService.getWidgetTypes();
         }
 

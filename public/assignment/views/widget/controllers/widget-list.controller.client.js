@@ -13,14 +13,13 @@
         model.trust = trust;
 
 
-
-        model.userId = $routeParams['uid'];
-        model.websiteId = $routeParams['wid'];
-        model.pageId = $routeParams['pid'];
-
         function init() {
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
 
+            model.userId = $routeParams['uid'];
+            model.websiteId = $routeParams['wid'];
+            model.pageId = $routeParams['pid'];
+
+            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
         }
         init();
         

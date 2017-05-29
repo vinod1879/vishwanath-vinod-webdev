@@ -5,12 +5,14 @@
 
     function websiteService() {
 
+        // API's provided
         this.createWebsite = createWebsite;
         this.deleteWebsite = deleteWebsite;
         this.findWebsiteById = findWebsiteById;
         this.findWebsitesByUser = findAllWebsitesByUser;
         this.updateWebsite = updateWebsite;
 
+        // Helper Functions
         function createWebsite(userId, website) {
             website._id = (new Date()).getTime() + "";
             website.developerId = userId;

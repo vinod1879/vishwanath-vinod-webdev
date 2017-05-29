@@ -8,13 +8,12 @@
 
         var model = this;
 
-        model.userId = $routeParams['uid'];
-
-        function init() {
-            model.websites = websiteService.findWebsitesByUser(model.userId);
-        }
         init();
 
+        function init() {
+            model.userId = $routeParams['uid'];
+            model.websites = websiteService.findWebsitesByUser(model.userId);
+        }
     }
 
 })();

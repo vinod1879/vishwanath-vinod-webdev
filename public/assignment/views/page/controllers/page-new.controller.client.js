@@ -9,14 +9,13 @@
         var model = this;
         model.createPage = createPage;
 
-        model.userId = $routeParams['uid'];
-        model.websiteId = $routeParams['wid'];
-        model.page = {};
-
         init();
 
         function init() {
 
+            model.userId = $routeParams['uid'];
+            model.websiteId = $routeParams['wid'];
+            model.page = {};
         }
 
         function createPage() {

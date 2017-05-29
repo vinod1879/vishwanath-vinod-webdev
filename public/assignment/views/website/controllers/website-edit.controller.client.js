@@ -10,12 +10,11 @@
         model.updateWebsite = updateWebsite;
         model.deleteWebsite = deleteWebsite;
 
-        model.userId = $routeParams['uid'];
-        model.websiteId = $routeParams['wid'];
-
         init();
 
         function init() {
+            model.userId = $routeParams['uid'];
+            model.websiteId = $routeParams['wid'];
             model.website = angular.copy(websiteService.findWebsiteById(model.websiteId));
             model.websites = websiteService.findWebsitesByUser(model.userId);
         }

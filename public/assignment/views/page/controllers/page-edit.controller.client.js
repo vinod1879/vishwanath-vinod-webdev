@@ -10,13 +10,13 @@
         model.updatePage = updatePage;
         model.deletePage = deletePage;
 
-        model.userId = $routeParams['uid'];
-        model.websiteId = $routeParams['wid'];
-        model.pageId = $routeParams['pid'];
-
         init();
 
         function init() {
+
+            model.userId = $routeParams['uid'];
+            model.websiteId = $routeParams['wid'];
+            model.pageId = $routeParams['pid'];
             model.page = angular.copy(pageService.findPageById(model.pageId));
             model.pages = pageService.findPagesByWebsiteId(model.websiteId);
         }

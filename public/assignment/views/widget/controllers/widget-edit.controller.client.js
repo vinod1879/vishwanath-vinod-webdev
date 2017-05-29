@@ -10,14 +10,14 @@
         model.updateWidget = updateWidget;
         model.deleteWidget = deleteWidget;
 
-        model.userId = $routeParams['uid'];
-        model.websiteId = $routeParams['wid'];
-        model.pageId = $routeParams['pid'];
-        model.widgetId = $routeParams['wgid'];
-
         init();
 
         function init() {
+            model.userId = $routeParams['uid'];
+            model.websiteId = $routeParams['wid'];
+            model.pageId = $routeParams['pid'];
+            model.widgetId = $routeParams['wgid'];
+
             model.widget = angular.copy(widgetService.findWidgetById(model.widgetId));
         }
 
