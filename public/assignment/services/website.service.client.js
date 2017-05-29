@@ -14,7 +14,13 @@
         function createWebsite(userId, website) {
             website._id = (new Date()).getTime() + "";
             website.developerId = userId;
+            website.createdOn = getDateString(new Date());
+            website.updatedOn = getDateString(new Date());
             websites.push(website)
+        }
+
+        function getDateString(date) {
+            return "" + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
         }
 
         function deleteWebsite(websiteId) {
@@ -46,19 +52,20 @@
 
             var previous = findWebsiteById(websiteId);
             var index = websites.indexOf(previous);
+            website.updatedOn = getDateString(new Date());
 
             websites[index] = website;
         }
     }
 
     var websites = [
-        { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem", "createdOn": "1/1/2004", "modifiedOn": "1/1/2017" },
-        { "_id": "234", "name": "Twitter",     "developerId": "456", "description": "Lorem", "createdOn": "1/1/2011", "modifiedOn": "1/1/2017" },
-        { "_id": "456", "name": "Gizmodo",     "developerId": "456", "description": "Lorem", "createdOn": "1/1/2006", "modifiedOn": "1/1/2017" },
-        { "_id": "890", "name": "Go",          "developerId": "123", "description": "Lorem", "createdOn": "1/1/2016", "modifiedOn": "1/1/2017" },
-        { "_id": "567", "name": "Tic Tac Toe", "developerId": "123", "description": "Lorem", "createdOn": "1/1/2004", "modifiedOn": "1/1/2017" },
-        { "_id": "678", "name": "Checkers",    "developerId": "123", "description": "Lorem", "createdOn": "1/1/2009", "modifiedOn": "1/1/2017" },
-        { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem", "createdOn": "1/1/2012", "modifiedOn": "1/1/2017" }
+        { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem", "createdOn": "1/1/2004", "updatedOn": "1/1/2017" },
+        { "_id": "234", "name": "Twitter",     "developerId": "456", "description": "Lorem", "createdOn": "1/1/2011", "updatedOn": "1/1/2017" },
+        { "_id": "456", "name": "Gizmodo",     "developerId": "456", "description": "Lorem", "createdOn": "1/1/2006", "updatedOn": "1/1/2017" },
+        { "_id": "890", "name": "Go",          "developerId": "123", "description": "Lorem", "createdOn": "1/1/2016", "updatedOn": "1/1/2017" },
+        { "_id": "567", "name": "Tic Tac Toe", "developerId": "123", "description": "Lorem", "createdOn": "1/1/2004", "updatedOn": "1/1/2017" },
+        { "_id": "678", "name": "Checkers",    "developerId": "123", "description": "Lorem", "createdOn": "1/1/2009", "updatedOn": "1/1/2017" },
+        { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem", "createdOn": "1/1/2012", "updatedOn": "1/1/2017" }
     ];
 
 })();

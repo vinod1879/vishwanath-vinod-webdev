@@ -58,8 +58,9 @@
             <label for="description">Description</label>
             <textarea id="description"
                       rows="5"
+                      ng-model="model.website.description"
                       placeholder="So big, it could be its own country"
-                      class="form-control">{{model.website.description}}</textarea>
+                      class="form-control"></textarea>
             <a class="btn btn-block btn-danger" href="#" ng-click="model.deleteWebsite()">Delete</a>
         </div>
     </div>
