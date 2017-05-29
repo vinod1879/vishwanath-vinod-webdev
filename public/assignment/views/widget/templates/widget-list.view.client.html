@@ -9,7 +9,7 @@
                 Widget List
             </a>
             <p class="navbar-text pull-right">
-                <a href="widget-chooser.html" class="navbar-link">
+                <a href="/assignment/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" class="navbar-link">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </p>
@@ -21,7 +21,7 @@
 
     <div ng-repeat="widget in model.widgets" class="wbd-widget">
         <div class="wbd-widget-toolbar">
-            <a href="widget-heading.html">
+            <a href="/assignment/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
             <span class="glyphicon glyphicon-align-justify"></span>

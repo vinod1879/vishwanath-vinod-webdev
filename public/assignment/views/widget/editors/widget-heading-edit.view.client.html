@@ -1,28 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Heading Widget</title>
-    <link href="../../vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css"
-          rel="stylesheet">
-    <link href="../css/style.css"
-          rel="stylesheet">
-</head>
-<body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="widget-list.html">
+            <a class="navbar-brand" href="/assignment/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
             <a class="navbar-brand" href="#">
                 Heading Widget
             </a>
             <p class="navbar-text pull-right">
-                <a href="widget-chooser.html" class="navbar-link">
-                    <span class="glyphicon glyphicon-plus"></span>
+                <a ng-click="model.updateWidget()" href="#" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
         </div>
@@ -34,34 +22,34 @@
     <label for="name">Name</label>
     <input type="text"
            class="form-control"
+           ng-model="model.widget.name"
            placeholder=""
            id="name" />
 
     <label for="text">Text</label>
     <input type="text"
            class="form-control"
+           ng-model="model.widget.text"
            placeholder=""
            id="text" />
 
     <label for="size">Size</label>
     <input type="text"
            class="form-control"
+           ng-model="model.widget.size"
            placeholder=""
            id="size" />
 
-    <a class="btn btn-block btn-danger" href="#">Delete</a>
+    <a class="btn btn-block btn-danger" href="#" ng-click="model.deleteWidget()">Delete</a>
 
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="../user/profile.html" class="navbar-link">
+            <a href="/assignment/user/{{model.userId}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </p>
     </div>
 </nav>
-
-</body>
-</html>

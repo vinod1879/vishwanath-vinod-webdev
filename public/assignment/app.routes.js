@@ -74,11 +74,11 @@
     }
 
     function widgetNew() {
-        return makeRoute('assignment/views/user/templates/profile.html');
+        return makeRoute('assignment/views/widget/templates/widget-chooser.view.client.html', 'WidgetNewController', 'model');
     }
 
     function widgetEdit() {
-        return makeRoute('assignment/views/user/templates/profile.html');
+        return makeRoute('assignment/views/widget/templates/widget-edit.view.client.html', 'WidgetEditController', 'model');
     }
 
     function makeRoute(path, controller, alias) {

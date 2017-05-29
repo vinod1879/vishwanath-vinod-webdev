@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Choose Widget</title>
-    <link href="../../vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css"
-          rel="stylesheet">
-    <link href="../css/style.css"
-          rel="stylesheet">
-</head>
-<body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="widget-list.html">
+            <a class="navbar-brand" href="/assignment/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
             <a class="navbar-brand" href="#">
                 Choose Widget
             </a>
             <p class="navbar-text pull-right">
-                <a href="widget-chooser.html" class="navbar-link">
+                <a href="#" class="navbar-link">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </p>
@@ -31,28 +19,20 @@
 
 <div class="container wbd-page-content">
     <ul class="list-group">
-        <li class="list-inline"><a href="widget-heading.html">Header</a></li>
-        <li class="list-inline"><a href="#">Label</a></li>
-        <li class="list-inline"><a href="#">HTML</a></li>
-        <li class="list-inline"><a href="#">Text Input</a></li>
-        <li class="list-inline"><a href="#">Link</a></li>
-        <li class="list-inline"><a href="#">Button</a></li>
-        <li class="list-inline"><a href="widget-image.html">Image</a></li>
-        <li class="list-inline"><a href="widget-youtube.html">YouTube</a></li>
-        <li class="list-inline"><a href="#">Table</a></li>
-        <li class="list-inline"><a href="#">Repeater</a></li>
+        <li class="list-inline" ng-repeat="widgetType in model.widgetTypes">
+            <a href="#" ng-click="model.createWidget(widgetType.widgetType)">
+                {{widgetType.text}}
+            </a>
+        </li>
     </ul>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <p class="navbar-text pull-right">
-            <a href="../user/profile.html" class="navbar-link">
+            <a href="/assignment/user/{{model.userId}}" class="navbar-link">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
         </p>
     </div>
 </nav>
-
-</body>
-</html>
