@@ -10,19 +10,32 @@
 
         function login(username, password) {
 
+            if (validate(username, password)) {
+
+                userService.findUserByCredentials(username, password)
+                    .then(
+                        function(response) {
+
+                            console.log('Success!');
+                            var user = response.data;
+                            $location.url('/assignment/user/' + user._id + '/website');
+
+                    },
+                        function(response) {
+
+                            console.log('Failure!');
+                            model.message = response.message;
+                    });
+            }
+        }
+
+        function validate(username, password) {
+
             if (!username || !password) {
-                model.message = "Username/Password cannot be empty!"
-                return;
+                model.message = "Username/Password cannot be empty!";
+                return false;
             }
-
-            var user = userService.findUserByCredentials(username, password);
-
-            if (user !== null) {
-                $location.url('/assignment/user/' + user._id + '/website');
-            }
-            else {
-                model.message = "Sorry! Incorrect username or password.";
-            }
+            return true;
         }
     }
 

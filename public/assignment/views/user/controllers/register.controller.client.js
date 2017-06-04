@@ -10,32 +10,52 @@
 
         function register(username, password, verifyPassword) {
 
+            if (!validate(username, password, verifyPassword)) {
+                return;
+            }
+
+            userService.findUserByUsername(username)
+                .then(
+                    function (response) {
+                        console.log('Found ' + response.username);
+                        model.message = "User already exists!";
+                        $q.reject();
+                    },
+                    function (response) {
+                        console.log('Did not find  ' + response.data.message);
+                        var user = {};
+                        user.username = username;
+                        user.password = password;
+
+                        return userService.createUser(user);
+                    }
+                )
+                .then(
+                    function (response) {
+                        var user = response.data;
+                        $location.url('/assignment/user/' + user._id + '/website');
+                    },
+                    function (response) {
+                        model.message = 'Error occurred! Please try again.';
+                    }
+                );
+        }
+
+        function validate(username, password, verifyPassword) {
+
             if (!username || !password) {
                 model.message = "Username/Password cannot be empty!";
-                return;
+                return false;
             }
 
             if (password !== verifyPassword) {
                 model.message = "Passwords must match!";
-                return;
+                return false;
             }
-
-            var user = userService.findUserByUsername(username, password);
-
-            if (user !== null) {
-                model.message = "User already exists!";
-                return;
-            }
-            else {
-
-                var user = {};
-                user.username = username;
-                user.password = password;
-
-                user = userService.createUser(user);
-                $location.url('/assignment/user/' + user._id + '/website');
-            }
+            return true;
         }
     }
 
 })();
+
+
