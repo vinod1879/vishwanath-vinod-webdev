@@ -17,8 +17,10 @@
         }
 
         function updateProfile() {
-            userService.updateUser(model.userId, model.user);
-            $location.url('/assignment/user/' + model.user._id + '/website');
+            userService.updateUser(model.userId, model.user)
+                .then(function() {
+                    $location.url('/assignment/user/' + model.user._id + '/website');
+                });
         }
     }
 })();

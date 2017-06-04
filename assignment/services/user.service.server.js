@@ -38,16 +38,18 @@ function findUsers (req, res) {
 
     if (username) {
 
-        var user;
+        var user, message;
 
         if (password) {
             user = findUserByCredentials(username, password);
+            message = 'Incorrect username or password';
         }
         else {
             user = findUserByUsername(username);
+            message = 'User not found';
         }
 
-        sendUserResponse(user, res);
+        sendUserResponse(user, res, message);
     }
     else {
         res.json(users);
@@ -61,7 +63,7 @@ function findUserById(req, res) {
         return user._id === userId;
     });
 
-    sendUserResponse(user, res);
+    sendUserResponse(user, res, 'User not found');
 }
 
 function updateUser(req, res) {
@@ -93,12 +95,12 @@ function deleteUser(req, res) {
 
 // Helper Functions
 
-function sendUserResponse(user, res) {
+function sendUserResponse(user, res, message) {
     if (user) {
         res.json(user);
     }
     else {
-        res.status(404).json({message: "No such user exists!"});
+        res.status(404).json({message: message});
     }
 }
 

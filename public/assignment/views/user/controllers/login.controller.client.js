@@ -23,8 +23,7 @@
                     },
                         function(response) {
 
-                            console.log('Failure!');
-                            model.message = response.message;
+                            model.message = response.data.message;
                     });
             }
         }

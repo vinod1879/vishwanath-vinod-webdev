@@ -17,12 +17,10 @@
             userService.findUserByUsername(username)
                 .then(
                     function (response) {
-                        console.log('Found ' + response.username);
                         model.message = "User already exists!";
                         $q.reject();
                     },
                     function (response) {
-                        console.log('Did not find  ' + response.data.message);
                         var user = {};
                         user.username = username;
                         user.password = password;
