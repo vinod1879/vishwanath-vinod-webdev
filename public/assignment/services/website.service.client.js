@@ -3,7 +3,7 @@
         .module('WebAppMaker')
         .service('websiteService', websiteService);
 
-    function websiteService() {
+    function websiteService($http) {
 
         // API's provided
         this.createWebsite = createWebsite;
@@ -14,60 +14,35 @@
 
         // Helper Functions
         function createWebsite(userId, website) {
-            website._id = (new Date()).getTime() + "";
-            website.developerId = userId;
-            website.createdOn = getDateString(new Date());
-            website.updatedOn = getDateString(new Date());
-            websites.push(website)
-        }
+            var url = '/api/user/' + userId + '/website';
 
-        function getDateString(date) {
-            return "" + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+            return $http.post(url, website);
         }
 
         function deleteWebsite(websiteId) {
-            var website = findWebsiteById(websiteId);
-            var index = websites.indexOf(website);
-            websites.splice(index, 1);
+            var url = '/api/website/' + websiteId;
+
+            return $http.delete(url);
         }
 
         function findWebsiteById(websiteId) {
-            return websites.find(function(website) {
-                return website._id === websiteId;
-            });
+            var url = '/api/website/' + websiteId;
+
+            return $http.get(url);
         }
 
         function findAllWebsitesByUser(userId) {
-            var results = [];
+            var url = '/api/user/' + userId + '/website';
 
-            for (var i in websites) {
-                if (websites[i].developerId === userId) {
-                    websites[i].accessed = new Date();
-                    results.push(websites[i]);
-                }
-            }
-
-            return results;
+            return $http.get(url);
         }
 
         function updateWebsite(websiteId, website) {
 
-            var previous = findWebsiteById(websiteId);
-            var index = websites.indexOf(previous);
-            website.updatedOn = getDateString(new Date());
+            var url = '/api/website/' + websiteId;
 
-            websites[index] = website;
+            return $http.put(url, website);
         }
     }
-
-    var websites = [
-        { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem", "createdOn": "1/1/2004", "updatedOn": "1/1/2017" },
-        { "_id": "234", "name": "Twitter",     "developerId": "456", "description": "Lorem", "createdOn": "1/1/2011", "updatedOn": "1/1/2017" },
-        { "_id": "456", "name": "Gizmodo",     "developerId": "456", "description": "Lorem", "createdOn": "1/1/2006", "updatedOn": "1/1/2017" },
-        { "_id": "890", "name": "Go",          "developerId": "123", "description": "Lorem", "createdOn": "1/1/2016", "updatedOn": "1/1/2017" },
-        { "_id": "567", "name": "Tic Tac Toe", "developerId": "123", "description": "Lorem", "createdOn": "1/1/2004", "updatedOn": "1/1/2017" },
-        { "_id": "678", "name": "Checkers",    "developerId": "123", "description": "Lorem", "createdOn": "1/1/2009", "updatedOn": "1/1/2017" },
-        { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem", "createdOn": "1/1/2012", "updatedOn": "1/1/2017" }
-    ];
 
 })();

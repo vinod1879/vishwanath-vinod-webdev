@@ -19,9 +19,18 @@
             model.websiteId = $routeParams['wid'];
             model.pageId = $routeParams['pid'];
 
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
+            fetchWidgets();
         }
         init();
+
+        function fetchWidgets () {
+            widgetService.findWidgetsByPageId(model.pageId)
+                .then(
+                    function (response) {
+                        model.widgets = response.data;
+                    }
+                );
+        }
         
         function widgetUrl(widget) {
 

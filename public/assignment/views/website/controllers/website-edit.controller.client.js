@@ -15,18 +15,44 @@
         function init() {
             model.userId = $routeParams['uid'];
             model.websiteId = $routeParams['wid'];
-            model.website = angular.copy(websiteService.findWebsiteById(model.websiteId));
-            model.websites = websiteService.findWebsitesByUser(model.userId);
+            fetchWebsite();
+            fetchWebsites();
+        }
+
+        function fetchWebsite () {
+            websiteService.findWebsiteById(model.websiteId)
+                .then(
+                    function (response) {
+                        model.website = response.data;
+                    }
+                )
+        }
+
+        function fetchWebsites() {
+            websiteService.findWebsitesByUser(model.userId)
+                .then(
+                    function (response) {
+                        model.websites = response.data;
+                    }
+                );
         }
 
         function updateWebsite() {
-            websiteService.updateWebsite(model.websiteId, model.website);
-            $location.url('/assignment/user/' + model.userId + '/website');
+            websiteService.updateWebsite(model.websiteId, model.website)
+                .then(
+                    function (response) {
+                        $location.url('/assignment/user/' + model.userId + '/website');
+                    }
+                );
         }
 
         function deleteWebsite() {
-            websiteService.deleteWebsite(model.websiteId);
-            $location.url('/assignment/user/' + model.userId + '/website');
+            websiteService.deleteWebsite(model.websiteId)
+                .then(
+                    function (response) {
+                        $location.url('/assignment/user/' + model.userId + '/website');
+                    }
+                );
         }
     }
 

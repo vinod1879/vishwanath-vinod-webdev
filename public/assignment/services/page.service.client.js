@@ -4,7 +4,7 @@
         .module('WebAppMaker')
         .service('pageService', pageService);
 
-    function pageService () {
+    function pageService ($http) {
 
         // API's provided
         this.createPage = createPage;
@@ -15,58 +15,34 @@
 
         // Helper Functions
         function createPage(websiteId, page) {
-            page._id = (new Date()).getTime() + "";
-            page.websiteId = websiteId;
-            page.createdOn = getDateString(new Date());
-            page.updatedOn = getDateString(new Date());
+            var url = '/api/website/' + websiteId + '/page';
 
-            pages.push(page);
-        }
-
-        function getDateString(date) {
-            return "" + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+            return $http.post(url, page);
         }
 
         function findPagesByWebsiteId(websiteId) {
-            var results = []
+            var url = '/api/website/' + websiteId + '/page';
 
-            for (var i in pages) {
-                if (pages[i].websiteId === websiteId) {
-                    results.push(pages[i]);
-                }
-            }
-
-            return results;
+            return $http.get(url);
         }
 
         function findPageById(pageId) {
+            var url = '/api/page/' + pageId;
 
-            return pages.find(function(page) {
-                return page._id === pageId;
-            })
+            return $http.get(url);
         }
 
         function updatePage(pageId, page) {
-            var oldPage = findPageById(pageId);
-            var index = pages.indexOf(oldPage);
+            var url = '/api/page/' + pageId;
 
-            page.updatedOn = getDateString(new Date());
-
-            pages[index] = page;
+            return $http.put(url, page);
         }
 
         function deletePage(pageId) {
-            var page = findPageById(pageId);
-            var index = pages.indexOf(page);
+            var url = '/api/page/' + pageId;
 
-            pages.splice(index, 1);
+            return $htp.delete(url);
         }
     }
-
-    var pages = [
-        { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem", "createdOn": "1/1/2012", "updatedOn": "1/1/2017"  },
-        { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem", "createdOn": "1/1/2012", "updatedOn": "1/1/2017"  },
-        { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem", "createdOn": "1/1/2012", "updatedOn": "1/1/2017"  }
-    ];
 
 })();

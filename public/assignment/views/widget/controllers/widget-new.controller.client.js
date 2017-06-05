@@ -17,14 +17,29 @@
             model.websiteId = $routeParams['wid'];
             model.pageId = $routeParams['pid'];
 
-            model.widgetTypes = widgetService.getWidgetTypes();
+            fetchWidgetTypes();
+        }
+
+        function fetchWidgetTypes () {
+            widgetService.getWidgetTypes()
+                .then(
+                    function (response) {
+                        model.widgetTypes = response.data;
+                    }
+                );
         }
 
         function createWidget(widgetType) {
-            widget = {};
-            widget.widgetType = widgetType;
-            widget = widgetService.createWidget(model.pageId, widget);
-            $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
+
+            console.log('Creating widget...');
+            widgetService.createWidget(model.pageId, {widgetType: widgetType})
+                .then(
+                    function (response) {
+                        console.log('Creating widget...complete');
+                        var widget = response.data;
+                        $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
+                    }
+                );
         }
     }
 

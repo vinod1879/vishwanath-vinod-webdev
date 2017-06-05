@@ -19,8 +19,10 @@
         }
 
         function createPage() {
-            pageService.createPage(model.websiteId, model.page);
-            $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page');
+            pageService.createPage(model.websiteId, model.page)
+                .then(function (response) {
+                    $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                });
         }
     }
 

@@ -17,18 +17,49 @@
             model.userId = $routeParams['uid'];
             model.websiteId = $routeParams['wid'];
             model.pageId = $routeParams['pid'];
-            model.page = angular.copy(pageService.findPageById(model.pageId));
-            model.pages = pageService.findPagesByWebsiteId(model.websiteId);
+
+            fetchPage();
+            fetchPages();
+        }
+        
+        function fetchPage () {
+
+            pageService.findPageById(model.pageId)
+                .then(
+                    function (response) {
+                        model.page = response.data;
+                    }
+                )
+            
+        }
+
+        function fetchPages() {
+
+            pageService.findPagesByWebsiteId(model.websiteId)
+                .then(
+                    function(response) {
+                        model.pages = response.data;
+                    }
+                );
         }
 
         function updatePage() {
-            pageService.updatePage(model.pageId, model.page);
-            $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page');
+            pageService.updatePage(model.pageId, model.page)
+                .then(
+                    function(response) {
+
+                        $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                    }
+                );
         }
 
         function deletePage() {
-            pageService.deletePage(model.pageId);
-            $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page');
+            pageService.deletePage(model.pageId)
+                .then(
+                    function (response) {
+                        $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                    }
+                );
         }
     }
 

@@ -15,12 +15,23 @@
 
             model.userId = $routeParams['uid'];
             model.website = {};
-            model.websites = websiteService.findWebsitesByUser(model.userId);
+            fetchWebsites();
+        }
+
+        function fetchWebsites() {
+            websiteService.findWebsitesByUser(model.userId)
+                .then(
+                    function (response) {
+                        model.websites = response.data;
+                    }
+                );
         }
 
         function createWebsite() {
-            websiteService.createWebsite(model.userId, model.website);
-            $location.url('/assignment/user/' + model.userId + '/website');
+            websiteService.createWebsite(model.userId, model.website)
+                .then(function (response) {
+                    $location.url('/assignment/user/' + model.userId + '/website');
+                });
         }
     }
 

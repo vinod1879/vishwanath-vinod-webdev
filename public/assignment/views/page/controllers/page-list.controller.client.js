@@ -13,7 +13,17 @@
         function init() {
             model.userId = $routeParams['uid'];
             model.websiteId = $routeParams['wid'];
-            model.pages = pageService.findPagesByWebsiteId(model.websiteId);
+            fetchPages();
+        }
+
+        function fetchPages() {
+
+            pageService.findPagesByWebsiteId(model.websiteId)
+                .then(
+                    function(response) {
+                        model.pages = response.data;
+                    }
+                );
         }
     }
 

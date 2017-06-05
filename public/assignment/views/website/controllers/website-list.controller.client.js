@@ -12,7 +12,16 @@
 
         function init() {
             model.userId = $routeParams['uid'];
-            model.websites = websiteService.findWebsitesByUser(model.userId);
+            fetchWebsites();
+        }
+
+        function fetchWebsites() {
+            websiteService.findWebsitesByUser(model.userId)
+                .then(
+                    function (response) {
+                        model.websites = response.data;
+                    }
+                );
         }
     }
 
