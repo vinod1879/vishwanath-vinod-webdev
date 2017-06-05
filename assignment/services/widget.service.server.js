@@ -28,6 +28,7 @@ function widgetService(app) {
     app.get   ('/api/widget/:widgetId', findWidgetById);
     app.put   ('/api/widget/:widgetId', updateWidget);
     app.delete('/api/widget/:widgetId', deleteWidget);
+    app.get   ('/api/widgetTypes', findAllWidgetTypes);
 }
 /**
  * User API routing
@@ -44,7 +45,7 @@ function createWidget (req, res) {
     var widget = req.body;
 
     widget._id = (new Date()).getTime() + "";
-    widget.widgetId = pageId;
+    widget.pageId = pageId;
     widget.createdOn = getDateString(new Date());
     widget.updatedOn = getDateString(new Date());
 
@@ -81,7 +82,7 @@ function updateWidget(req, res) {
         res.sendStatus(400);
     }
     else {
-        widgets[index] = widgets;
+        widgets[index] = widget;
         res.sendStatus(200);
     }
 }
@@ -96,6 +97,10 @@ function deleteWidget(req, res) {
         widgets.splice(index, 1);
         res.sendStatus(200);
     }
+}
+
+function findAllWidgetTypes(req, res) {
+    return res.json(widgetTypes);
 }
 
 // Helper Functions
