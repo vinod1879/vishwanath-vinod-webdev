@@ -13,6 +13,7 @@
         this.updateWidget = updateWidget;
         this.deleteWidget = deleteWidget;
         this.getWidgetTypes = getWidgetTypes;
+        this.reorderWidgets = reorderWidgets;
 
         // Helper Functions
         function createWidget(pageId, widget) {
@@ -49,6 +50,12 @@
             var url = '/api/widgetTypes';
 
             return $http.get(url);
+        }
+
+        function reorderWidgets(pageId, startIndex, endIndex) {
+            var url = '/api/page/' + pageId + '/widget?initial=' + startIndex + "&final=" + endIndex;
+
+            return $http.put(url);
         }
     }
 

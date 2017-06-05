@@ -99,12 +99,13 @@ function deleteWidget(req, res) {
 }
 
 function updateWidgetOrder(req, res) {
-    var initial = parseInt(req.query['initial']);
-    var final = parseInt(req.query['final']);
 
-    if (initial && final) {
+    if (req.query['initial'] && req.query['final']) {
 
+        var initial = parseInt(req.query['initial']);
+        var final = parseInt(req.query['final']);
         var pageId = req.params['pageId'];
+
         var matches = fetchWidgetsOfPage(pageId);
 
         if (initial >= 0 && final < matches.length && initial !== final) {
@@ -161,7 +162,7 @@ function fetchWidgetsOfPage(pageId) {
         return wg.pageId === pageId;
     });
     return matches.sort(function(o1, o2) {
-        return o1.order > o2.order;
+        return o1.index > o2.index;
     });
 }
 

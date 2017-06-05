@@ -13,7 +13,6 @@
         model.trust = trust;
         model.handleSort = handleSort;
 
-
         function init() {
 
             model.userId = $routeParams['uid'];
@@ -34,8 +33,16 @@
         }
 
         function handleSort (from, to) {
-            console
-                .log('from: ' + from + ' to: ' + to);
+
+            if (from === to) { return; }
+
+            widgetService.reorderWidgets(model.pageId, from, to)
+                .then(
+                    null,
+                    function (response) {
+                        model.widgets = angular.copy(model.widgets); // trigger reload when update fails
+                    }
+                );
         }
         
         function widgetUrl(widget) {
