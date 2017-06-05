@@ -101,3 +101,8 @@ body {
     left: 0px;
     height: 100%;
 }
+
+.wbd-page-content ul {
+    list-style-type: none;
+    padding-left: 0px;
+}

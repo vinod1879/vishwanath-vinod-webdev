@@ -11,6 +11,7 @@
         model.widgetUrl = widgetUrl;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.trust = trust;
+        model.handleSort = handleSort;
 
 
         function init() {
@@ -30,6 +31,11 @@
                         model.widgets = response.data;
                     }
                 );
+        }
+
+        function handleSort (from, to) {
+            console
+                .log('from: ' + from + ' to: ' + to);
         }
         
         function widgetUrl(widget) {
