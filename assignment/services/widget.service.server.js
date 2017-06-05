@@ -23,6 +23,9 @@ var widgetTypes = [
 
 function widgetService(app) {
 
+    var multer = require('multer'); // npm install multer --save
+    var upload = multer({ dest: __dirname+'/../../public/uploads' });
+
     app.post  ('/api/page/:pageId/widget', createWidget);
     app.get   ('/api/page/:pageId/widget', findAllWidgetsOfPage);
     app.put   ('/api/page/:pageId/widget', updateWidgetOrder);
@@ -30,6 +33,7 @@ function widgetService(app) {
     app.put   ('/api/widget/:widgetId', updateWidget);
     app.delete('/api/widget/:widgetId', deleteWidget);
     app.get   ('/api/widgetTypes', findAllWidgetTypes);
+    app.post  ("/api/upload", upload.single('myFile'), uploadImage);
 }
 /**
  * User API routing
@@ -66,11 +70,8 @@ function findAllWidgetsOfPage(req, res) {
 
 function findWidgetById (req, res) {
     var widgetId = req.params['widgetId'];
-    var widget = widgets.find(function(wg) {
-        return wg._id === widgetId;
-    });
 
-    sendWidgetResponse(widget, res);
+    sendWidgetResponse(getWidgetById(widgetId), res);
 }
 
 function updateWidget(req, res) {
@@ -145,6 +146,32 @@ function findAllWidgetTypes(req, res) {
     return res.json(widgetTypes);
 }
 
+function uploadImage(req, res) {
+
+    var widgetId      = req.body.widgetId;
+    var width         = req.body.width;
+    var myFile        = req.file;
+
+    var userId = req.body.userId;
+    var websiteId = req.body.websiteId;
+    var pageId = req.body.pageId;
+
+    var originalname  = myFile.originalname; // file name on user's computer
+    var filename      = myFile.filename;     // new file name in upload folder
+    var path          = myFile.path;         // full path of uploaded file
+    var destination   = myFile.destination;  // folder where file is saved to
+    var size          = myFile.size;
+    var mimetype      = myFile.mimetype;
+
+    widget = getWidgetById(widgetId);
+    widget.url = '/uploads/'+filename;
+
+    var callbackUrl   = "/assignment/user/"+userId+"/website/"+websiteId+'/page/'+pageId+'/widget/'+widgetId;
+
+    res.redirect(callbackUrl);
+}
+
+
 // Helper Functions
 
 function sendWidgetResponse(widget, res) {
@@ -163,6 +190,13 @@ function fetchWidgetsOfPage(pageId) {
     });
     return matches.sort(function(o1, o2) {
         return o1.index > o2.index;
+    });
+}
+
+function getWidgetById(widgetId) {
+
+    return widget = widgets.find(function(wg) {
+        return wg._id === widgetId;
     });
 }
 
