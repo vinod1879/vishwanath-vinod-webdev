@@ -53,6 +53,7 @@ function createWidget (req, res) {
     widget.pageId = pageId;
     widget.createdOn = getDateString(new Date());
     widget.updatedOn = getDateString(new Date());
+    widget.index = fetchWidgetsOfPage(pageId).length;
 
     widgets.push(widget);
 

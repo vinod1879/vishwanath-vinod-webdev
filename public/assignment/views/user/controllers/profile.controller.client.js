@@ -13,7 +13,18 @@
 
         function init() {
             model.userId = $routeParams['uid'];
-            model.user = userService.findUserById(model.userId);
+
+            fetchProfile();
+        }
+
+        function fetchProfile () {
+
+            userService.findUserById(model.userId)
+                .then(
+                    function (response) {
+                        model.user = response.data;
+                    }
+                )
         }
 
         function updateProfile() {
