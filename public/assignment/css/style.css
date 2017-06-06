@@ -56,7 +56,8 @@ body {
     margin-bottom: 50px;
 }
 
-.wbd-page-content a {
+.wbd-page-content .btn-primary,
+.wbd-page-content .btn-danger {
     margin-top: 10px;
 }
 
@@ -105,4 +106,8 @@ body {
 .wbd-page-content ul {
     list-style-type: none;
     padding-left: 0px;
+}
+
+.wbd-photo-container div {
+    margin-top: 10px;
 }

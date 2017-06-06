@@ -20,6 +20,7 @@
             .when('/assignment/user/:uid/website/:wid/page/:pid/widget', widgetList())
             .when('/assignment/user/:uid/website/:wid/page/:pid/widget/new', widgetNew())
             .when('/assignment/user/:uid/website/:wid/page/:pid/widget/:wgid', widgetEdit())
+            .when('/assignment/user/:uid/website/:wid/page/:pid/widget/:wgid/image-search', widgetImageSearch())
             .otherwise(loginPage());
 
         console.log('Routes Configured!');
@@ -79,6 +80,10 @@
 
     function widgetEdit() {
         return makeRoute('assignment/views/widget/templates/widget-edit.view.client.html', 'WidgetEditController', 'model');
+    }
+
+    function widgetImageSearch () {
+        return makeRoute('assignment/views/widget/templates/widget-flickr-search.view.client.html', 'FlickrImageSearchController', 'model');
     }
 
     function makeRoute(path, controller, alias) {

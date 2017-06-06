@@ -31,12 +31,22 @@
            placeholder=""
            id="text" />
 
+
     <label for="widgetURL">URL</label>
-    <input type="text"
-           class="form-control"
-           ng-model="model.widget.url"
-           placeholder=""
-           id="widgetURL" />
+    <div class="input-group">
+        <input type="text"
+               class="form-control"
+               ng-model="model.widget.url"
+               placeholder=""
+               id="widgetURL" />
+        <span class="input-group-btn">
+            <a href="/assignment/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/image-search"
+               class="btn btn-default"
+               type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+    </div>
 
     <label for="width">Width</label>
     <input type="text"
