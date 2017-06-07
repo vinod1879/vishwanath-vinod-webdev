@@ -10,15 +10,15 @@ var widgets = [
 
 var widgetTypes = [
     { "widgetType": "HEADING", "text": "Heading" },
-    { "widgetType": "HTML", "text": "Label" },
-    { "widgetType": "HTML", "text": "HTML" },
-    { "widgetType": "HTML", "text": "Text Input" },
-    { "widgetType": "HTML", "text": "Link" },
-    { "widgetType": "HTML", "text": "Button" },
+    // { "widgetType": "HTML", "text": "Label" },
+    // { "widgetType": "HTML", "text": "HTML" },
+    // { "widgetType": "HTML", "text": "Text Input" },
+    // { "widgetType": "HTML", "text": "Link" },
+    // { "widgetType": "HTML", "text": "Button" },
     { "widgetType": "IMAGE", "text": "Image" },
-    { "widgetType": "YOUTUBE", "text": "YouTube" },
-    { "widgetType": "HTML", "text": "Table" },
-    { "widgetType": "HTML", "text": "Repeater" }
+    { "widgetType": "YOUTUBE", "text": "YouTube" }
+    // { "widgetType": "HTML", "text": "Table" },
+    // { "widgetType": "HTML", "text": "Repeater" }
 ];
 
 function widgetService(app) {
@@ -189,9 +189,15 @@ function fetchWidgetsOfPage(pageId) {
 
         return wg.pageId === pageId;
     });
-    return matches.sort(function(o1, o2) {
+    matches = matches.sort(function(o1, o2) {
         return o1.index > o2.index;
     });
+
+    for (var i in matches) {
+        matches[i].index = i; // reset indices, in case of deletions
+    }
+
+    return matches;
 }
 
 function getWidgetById(widgetId) {
