@@ -10,6 +10,7 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.findAllUsers = findAllUsers;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
+userModel.addWebsite = addWebsite;
 
 /**
  * Exports
@@ -45,4 +46,13 @@ function updateUser(userId, user) {
 
 function deleteUser(userId) {
     return userModel.remove({_id: userId});
+}
+
+function addWebsite(userId, websiteId) {
+    return userModel
+        .findById(userId)
+        .then(function (user) {
+            user.websites.push(websiteId);
+            return user.save();
+        });
 }

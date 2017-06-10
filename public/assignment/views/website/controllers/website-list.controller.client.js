@@ -7,6 +7,7 @@
     function websiteListController($routeParams, websiteService) {
 
         var model = this;
+        model.getDateString = getDateString;
 
         init();
 
@@ -22,6 +23,13 @@
                         model.websites = response.data;
                     }
                 );
+        }
+
+        function getDateString(date) {
+            if (date) {
+                date = new Date(date);
+                return dateFormat(date, 'mmm d yyyy');
+            }
         }
     }
 
