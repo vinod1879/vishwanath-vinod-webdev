@@ -32,7 +32,7 @@
         function createWidget(widgetType) {
 
             console.log('Creating widget...');
-            widgetService.createWidget(model.pageId, {widgetType: widgetType})
+            widgetService.createWidget(model.pageId, {type: widgetType})
                 .then(
                     function (response) {
                         console.log('Creating widget...complete');

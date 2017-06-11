@@ -47,7 +47,11 @@
         
         function widgetUrl(widget) {
 
-            return 'assignment/views/widget/templates/widget-' + widget.widgetType.toLowerCase() + '.view.client.html';
+            var url = 'assignment/views/widget/templates/widget-' + widget.type.toLowerCase() + '.view.client.html';
+
+            console.log('uRL: ' + url);
+
+            return url;
         }
 
         function getYouTubeEmbedUrl(linkUrl) {

@@ -9,6 +9,7 @@ pageModel.findAllPagesForWebsite = findAllPagesForWebsite;
 pageModel.findPageById = findPageById;
 pageModel.updatePage = updatePage;
 pageModel.deletePage = deletePage;
+pageModel.addWidget = addWidget;
 
 /**
  * Exports
@@ -41,4 +42,12 @@ function updatePage(pageId, page) {
 
 function deletePage(pageId) {
     return pageModel.remove({_id: pageId});
+}
+
+function addWidget(pageId, widgetId) {
+    return pageModel.findOne({_id: pageId})
+        .then(function (page) {
+            page.widgets.push(widgetId);
+            return page.save();
+        })
 }

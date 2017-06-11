@@ -1,8 +1,4 @@
-var pages = [
-    { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem", "createdOn": "1/1/2012", "updatedOn": "1/1/2017"  },
-    { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem", "createdOn": "1/1/2012", "updatedOn": "1/1/2017"  },
-    { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem", "createdOn": "1/1/2012", "updatedOn": "1/1/2017"  }
-];
+var pageModel = require('../model/page/page.model.server');
 
 function pageService(app) {
 
@@ -26,83 +22,76 @@ function createPage (req, res) {
     var websiteId = req.params['websiteId'];
     var page = req.body;
 
-    page._id = (new Date()).getTime() + "";
-    page.websiteId = websiteId;
-    page.createdOn = getDateString(new Date());
-    page.updatedOn = getDateString(new Date());
-
-    pages.push(page);
-
-    sendPageResponse(page, res);
+    pageModel
+        .createPage(websiteId, page)
+        .then(
+            function (page) {
+                res.json(page);
+            },
+            function (error) {
+                res.status(401).json(error);
+            }
+        );
 }
 
 function findAllPagesOfWebsite(req, res) {
 
     var websiteId = req.params['websiteId'];
-    var matches = pages.filter(function(pg) {
 
-        return pg.websiteId === websiteId;
-    });
-
-    res.json(matches);
+    pageModel
+        .findAllPagesForWebsite(websiteId)
+        .then(
+            function (pages) {
+                res.json(pages);
+            },
+            function (error) {
+                res.status(401).json(error);
+            }
+        );
 }
 
 function findPageById (req, res) {
     var pageId = req.params['pageId'];
-    var page = pages.find(function(pg) {
-        return pg._id === pageId;
-    });
 
-    sendPageResponse(page, res);
+    pageModel
+        .findPageById(pageId)
+        .then(
+            function (page) {
+                res.json(page);
+            },
+            function (error) {
+                res.status(400).json(error);
+            }
+        );
 }
 
 function updatePage(req, res) {
     var page = req.body;
-    var index = findIndexOfPageId(req.params['pageId']);
+    var pageId = req.params['pageId'];
 
-    if (index === -1) {
-        res.sendStatus(400);
-    }
-    else {
-        pages[index] = page;
-        res.sendStatus(200);
-    }
+    pageModel
+        .updatePage(pageId, page)
+        .then(
+            function (status) {
+                res.sendStatus(200);
+            },
+            function (error) {
+                res.status(400).json(error);
+            }
+        );
 }
 
 function deletePage(req, res) {
-    var index = findIndexOfPageId(req.params['pageId']);
+    var pageId = req.params['pageId'];
 
-    if (index === -1) {
-        res.sendStatus(400);
-    }
-    else {
-        pages.splice(index, 1);
-        res.sendStatus(200);
-    }
-}
-
-// Helper Functions
-
-function sendPageResponse(page, res) {
-    if (page) {
-        res.json(page);
-    }
-    else {
-        res.status(404).json({message: "No such page exists!"});
-    }
-}
-
-function findIndexOfPageId(pageId) {
-
-    for(var i in pages) {
-        if (pages[i]._id === pageId) {
-            return i;
-        }
-    }
-
-    return -1;
-}
-
-function getDateString(date) {
-    return "" + date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    pageModel
+        .deletePage(pageId)
+        .then(
+            function (status) {
+                res.sendStatus(200);
+            },
+            function (error) {
+                res.status(400).json(error);
+            }
+        );
 }

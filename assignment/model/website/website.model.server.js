@@ -23,8 +23,9 @@ function createWebsiteForUser(userId, website) {
         .create(website)
         .then(function (website) {
 
-            return userModel
-                .addWebsite(userId, website._id);
+            userModel.addWebsite(userId, website._id);
+
+            return website;
         });
 }
 
