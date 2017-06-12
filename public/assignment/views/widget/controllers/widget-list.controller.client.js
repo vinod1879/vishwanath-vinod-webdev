@@ -46,12 +46,7 @@
         }
         
         function widgetUrl(widget) {
-
-            var url = 'assignment/views/widget/templates/widget-' + widget.type.toLowerCase() + '.view.client.html';
-
-            console.log('uRL: ' + url);
-
-            return url;
+            return 'assignment/views/widget/templates/widget-' + widget.type.toLowerCase() + '.view.client.html';;
         }
 
         function getYouTubeEmbedUrl(linkUrl) {

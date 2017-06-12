@@ -11,6 +11,7 @@ userModel.findAllUsers = findAllUsers;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.addWebsite = addWebsite;
+userModel.removeWebsite = removeWebsite;
 
 /**
  * Exports
@@ -55,4 +56,19 @@ function addWebsite(userId, websiteId) {
             user.websites.push(websiteId);
             return user.save();
         });
+}
+
+function removeWebsite(websiteId) {
+    userModel
+        .find({websites:websiteId})
+        .then(
+            function (users) {
+                for (var i in users) {
+                    var user = users[i];
+                    var index = user.websites.indexOf(websiteId);
+                    user.websites.splice(index, 1);
+
+                    user.save();
+                }
+            });
 }
