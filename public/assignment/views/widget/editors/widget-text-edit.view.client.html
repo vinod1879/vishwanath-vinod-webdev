@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/assignment/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="navbar-brand" href="#">
+                Edit Text
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.updateWidget()" href="#" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+
+<div class="wbd-widget-html-container">
+    Text
+    <input ng-model="model.widget.text" class="form-control"/>
+    Rows
+    <input ng-model="model.widget.rows" class="form-control" type="number"/>
+    Placeholder
+    <input ng-model="model.widget.placeholder" class="form-control"/>
+    Formatted
+    <input ng-model="model.widget.formatted" type="checkbox"/>
+</div>
+
+<div ng-include src="'assignment/views/widget/common/widget-edit-footer.view.client.html'"></div>

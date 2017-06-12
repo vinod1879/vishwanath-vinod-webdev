@@ -1,7 +1,7 @@
 
 var mongoose = require('mongoose');
 
-var widgetTypes = ['HEADING', 'IMAGE', 'YOUTUBE', 'HTML', 'INPUT'];
+var widgetTypes = ['HEADING', 'IMAGE', 'YOUTUBE', 'HTML', 'INPUT', 'TEXT'];
 
 var widgetSchema = mongoose.Schema({
     _page: { type: mongoose.Schema.Types.ObjectId, ref: 'PageModel' },

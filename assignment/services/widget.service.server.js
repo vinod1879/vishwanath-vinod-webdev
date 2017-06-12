@@ -3,7 +3,8 @@ var widgetTypes = [
     { "widgetType": "HEADING", "text": "Heading" },
     { "widgetType": "IMAGE", "text": "Image" },
     { "widgetType": "YOUTUBE", "text": "YouTube" },
-    { "widgetType": "HTML", "text": "html" }
+    { "widgetType": "HTML", "text": "HTML" },
+    { "widgetType": "TEXT", "text": "Text" }
 
 ];
 
