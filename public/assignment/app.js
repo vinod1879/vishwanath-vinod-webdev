@@ -1,6 +1,6 @@
 (function(){ // IIFE = Immediate Invoked Function Expression
 
     angular
-        .module('WebAppMaker', ['app.routes']);
+        .module('WebAppMaker', ['app.routes', 'textAngular']);
 
 })();
