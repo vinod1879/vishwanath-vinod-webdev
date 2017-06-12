@@ -111,3 +111,8 @@ body {
 .wbd-photo-container div {
     margin-top: 10px;
 }
+
+.wbd-widget-html-container {
+    margin: 10px;
+    margin-top: 50px;
+}

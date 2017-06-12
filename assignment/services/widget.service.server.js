@@ -2,7 +2,9 @@
 var widgetTypes = [
     { "widgetType": "HEADING", "text": "Heading" },
     { "widgetType": "IMAGE", "text": "Image" },
-    { "widgetType": "YOUTUBE", "text": "YouTube" }
+    { "widgetType": "YOUTUBE", "text": "YouTube" },
+    { "widgetType": "HTML", "text": "html" }
+
 ];
 
 var widgetModel = require('../model/widget/widget.model.server');
