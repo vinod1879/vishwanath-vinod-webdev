@@ -6,7 +6,8 @@ var websiteSchema = mongoose.Schema({
     name: String,
     description: String,
     pages: [ {type: mongoose.Schema.Types.ObjectId, ref: 'PageModel'} ],
-    createdOn: { type: Date, default: Date.now() }
+    createdOn: { type: Date, default: Date.now() },
+    updatedOn: { type: Date, default: Date.now() }
 }, { collection: 'website'});
 
 module.exports = websiteSchema;

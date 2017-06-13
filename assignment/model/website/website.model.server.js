@@ -38,6 +38,7 @@ function findWebsiteById(websiteId) {
 }
 
 function updateWebsite(websiteId, website) {
+    website.updatedOn = Date.now()
     return websiteModel.update({_id: websiteId}, {$set: website});
 }
 
