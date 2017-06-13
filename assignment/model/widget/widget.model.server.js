@@ -62,28 +62,34 @@ function reorderWidgets(pageId, start, end) {
         .then(
             function (widgets) {
 
-                for (var i in widgets) {
-
-                    if ((i >= start && i <= end) ||
-                        (i >= end && i <= start)) {
-
-                        if (i == start)
-                            widgets[i].order = end;
-                        else if (start > end) {
-                            widgets[i].order += i + 1;
-                        }
-                        else {
-                            widgets[i].order = i - 1;
-                        }
-                    }
-                    else {
-                        widgets[i].order = i;
-                    }
-
-                    widgets[i].save();
-                }
-
+                sortAndSaveWidgets(widgets, start, end)
                 return;
             }
         )
+}
+
+function sortAndSaveWidgets(widgets, start, end) {
+
+    for (var i=0; i < widgets.length; i++) {
+        var widget = widgets[i];
+        if ((i >= start && i <= end) ||
+            (i >= end && i <= start)) {
+
+            if (i == start)
+                widget.order = end;
+            else if (start > end) {
+                widget.order = i+1;
+            }
+            else {
+                widget.order = i-1;
+            }
+        }
+        else {
+            widget.order = i;
+        }
+
+        console.log('New Order: ' + widget.order);
+
+        widget.save();
+    }
 }
