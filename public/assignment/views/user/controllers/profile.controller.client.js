@@ -8,6 +8,7 @@
 
         var model = this;
         model.updateProfile = updateProfile;
+        model.logout = logout;
 
         init();
 
@@ -23,6 +24,16 @@
                 .then(
                     function (response) {
                         model.user = response.data;
+                    }
+                )
+        }
+        
+        function logout() {
+            console.log('Logging out...');
+            userService.logout()
+                .then(
+                    function (response) {
+                        $location.url('/assignment/login');
                     }
                 )
         }

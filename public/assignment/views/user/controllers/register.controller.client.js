@@ -30,15 +30,12 @@
 
         function registerNewUser (username, password) {
 
-            var user = {};
-            user.username = username;
-            user.password = password;
+            var user = {username: username, password: password};
 
-            userService.createUser(user)
+            userService.register(user)
                 .then(
                     function (response) {
-                        var user = response.data;
-                        $location.url('/assignment/user/' + user._id + '/website');
+                        $location.url('/assignment/profile');
                     }
                 );
         }

@@ -12,18 +12,18 @@
 
             if (validate(username, password)) {
 
-                userService.findUserByCredentials(username, password)
+                userService.login(username, password)
                     .then(
                         function(response) {
 
                             console.log('Success!');
                             var user = response.data;
-                            $location.url('/assignment/user/' + user._id + '/website');
+                            $location.url('/assignment/website');
 
                     },
                         function(response) {
 
-                            model.message = response.data.message;
+                            model.message =  'Invalid username/password';
                     });
             }
         }

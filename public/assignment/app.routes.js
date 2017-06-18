@@ -10,8 +10,8 @@
             .when('/assignment/', loginPage())
             .when('/assignment/login', loginPage())
             .when('/assignment/register', registrationPage())
-            .when('/assignment/user/:uid', profilePage())
-            .when('/assignment/user/:uid/website', websiteList())
+            .when('/assignment/profile', profilePage())
+            .when('/assignment/website', websiteList())
             .when('/assignment/user/:uid/website/new', websiteNew())
             .when('/assignment/user/:uid/website/:wid', websiteEdit())
             .when('/assignment/user/:uid/website/:wid/page', pageList())
@@ -35,11 +35,11 @@
      */
 
     function loginPage() {
-        return makeRoute('assignment/views/user/templates/login.view.client.html', 'loginController', 'model');
+        return makeRoute('assignment/views/user/templates/login.view.client.html', 'loginController', 'model', true);
     }
 
     function registrationPage() {
-        return makeRoute('assignment/views/user/templates/register.view.client.html', 'registerController', 'model');
+        return makeRoute('assignment/views/user/templates/register.view.client.html', 'registerController', 'model', true);
     }
 
     function profilePage() {
@@ -86,13 +86,40 @@
         return makeRoute('assignment/views/widget/templates/widget-flickr-search.view.client.html', 'FlickrImageSearchController', 'model');
     }
 
-    function makeRoute(path, controller, alias) {
+    function makeRoute(path, controller, alias, unauthenticated) {
 
+        if (unauthenticated) {
+            return {
+                templateUrl: path,
+                controller: controller,
+                controllerAs: alias
+            }
+        }
         return {
             templateUrl: path,
             controller: controller,
-            controllerAs: alias
+            controllerAs: alias,
+            resolve: { loggedIn: checkAuthentication}
         }
+    }
+
+    function checkAuthentication($q, $timeout, $http, $location, $rootScope) {
+
+        var deferred = $q.defer();
+        $http
+            .get('/api/authenticate')
+            .then(
+                function (response) {
+                    console.log(response);
+                    deferred.resolve();
+                },
+                function (error) {
+                    console.log(error);
+                    deferred.reject();
+                    $location.url('/assignment/login');
+                }
+            );
+        return deferred.promise;
     }
 
 })();
