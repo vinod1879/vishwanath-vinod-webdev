@@ -15,6 +15,8 @@ function userService(app) {
 
     app.post('/api/login', passport.authenticate('local'), login);
     app.post('/api/logout', logout);
+    app.post('/api/register', register);
+    app.get('/api/authenticate', authenticate);
     
 }
 /**
@@ -142,7 +144,32 @@ function login(req, res) {
 
 function logout(req, res) {
     req.logout();
-    res.sendStatus(200);
+    res.status(200).json({success: true});
+}
+
+function register(req, res) {
+    var user = req.body;
+    userModel
+        .createUser(user)
+        .then(
+            function (user) {
+                req.login(user, function (status) {
+                    res.send(status);
+                });
+            },
+            function (error) {
+                res.sendStatus(401);
+            }
+        )
+}
+
+function authenticate(req, res) {
+    if (req.isAuthenticated()) {
+        res.sendStatus(200);
+    }
+    else {
+        res.sendStatus(401);
+    }
 }
 
 // HELPER METHODS

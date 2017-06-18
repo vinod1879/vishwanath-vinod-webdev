@@ -7,10 +7,11 @@
     function userService($http) {
 
         // API's provided
-        this.createUser = createUser;
+        this.register = register;
         this.findUserById = findUserById;
         this.findUserByUsername = findUserByUsername;
-        this.findUserByCredentials = findUserByCredentials;
+        this.login = login;
+        this.logout = logout;
         this.updateUser = updateUser;
         this.deleteUser = deleteUser;
 
@@ -20,6 +21,10 @@
             var url = '/api/user';
 
             return $http.post(url, user);
+        }
+
+        function register(user) {
+            return $http.post('/api/register', user);
         }
 
         function findUserByUsername(username) {
@@ -34,10 +39,12 @@
             return $http.get(url);
         }
 
-        function findUserByCredentials(username, password) {
-            var url = '/api/user?username=' + username + '&password=' + password;
+        function login(username, password) {
+            return $http.post('/api/login', {username: username, password: password});
+        }
 
-            return $http.get(url);
+        function logout() {
+            return $http.post('/api/logout');
         }
 
         function updateUser(userId, user) {
