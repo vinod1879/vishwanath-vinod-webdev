@@ -99,7 +99,7 @@
             templateUrl: path,
             controller: controller,
             controllerAs: alias,
-            resolve: { loggedIn: checkAuthentication}
+            resolve: { currentUser: checkAuthentication}
         }
     }
 
@@ -111,7 +111,7 @@
             .then(
                 function (response) {
                     console.log(response);
-                    deferred.resolve();
+                    deferred.resolve(response.data);
                 },
                 function (error) {
                     console.log(error);

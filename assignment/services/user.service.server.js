@@ -165,7 +165,7 @@ function register(req, res) {
 
 function authenticate(req, res) {
     if (req.isAuthenticated()) {
-        res.sendStatus(200);
+        res.json(req.user);
     }
     else {
         res.sendStatus(401);

@@ -4,7 +4,7 @@
         .module('WebAppMaker')
         .controller('profileController', profileController);
 
-    function profileController($location, $routeParams, userService) {
+    function profileController($location, $routeParams, userService, currentUser) {
 
         var model = this;
         model.updateProfile = updateProfile;
@@ -13,19 +13,9 @@
         init();
 
         function init() {
-            model.userId = $routeParams['uid'];
 
-            fetchProfile();
-        }
-
-        function fetchProfile () {
-
-            userService.findUserById(model.userId)
-                .then(
-                    function (response) {
-                        model.user = response.data;
-                    }
-                )
+            model.userId = currentUser._id;
+            model.user = currentUser;
         }
         
         function logout() {
@@ -41,7 +31,7 @@
         function updateProfile() {
             userService.updateUser(model.userId, model.user)
                 .then(function() {
-                    $location.url('/assignment/user/' + model.user._id + '/website');
+                    $location.url('/assignment/website');
                 });
         }
     }
