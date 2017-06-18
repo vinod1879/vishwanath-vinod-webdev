@@ -1,4 +1,9 @@
 var userModel = require('../model/user/user.model.server');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(localStrategy));
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
 
 function userService(app) {
 
@@ -7,6 +12,10 @@ function userService(app) {
     app.get('/api/user/:userId', findUserById);
     app.put('/api/user/:userId', updateUser);
     app.delete('/api/user/:userId', deleteUser);
+
+    app.post('/api/login', passport.authenticate('local'), login);
+    app.post('/api/logout', logout);
+    
 }
 /**
  * User API routing
@@ -35,12 +44,7 @@ function findUsers (req, res) {
 
     if (req.query['username']) {
 
-        if (req.query['password']) {
-            findUserByCredentials(req, res);
-        }
-        else {
-            findUserByUsername(req, res);
-        }
+        findUserByUsername(req, res);
     }
     else {
         findAllUsers(req, res);
@@ -56,28 +60,6 @@ function findUserByUsername (req, res) {
         .then(
             function(user) {
                 res.json({exists: (user !== null), user: user});
-            },
-            function (error) {
-                res.send(error);
-            }
-        );
-}
-
-function findUserByCredentials (req, res) {
-
-    var username = req.query['username'];
-    var password = req.query['password'];
-
-    userModel
-        .findUserByCredentials(username, password)
-        .then(
-            function(user) {
-                if (user) {
-                    res.json(user);
-                }
-                else {
-                    res.status(404).json({message: 'Invalid Username/Password!'});
-                }
             },
             function (error) {
                 res.send(error);
@@ -150,6 +132,50 @@ function deleteUser(req, res) {
             },
             function (error) {
                 res.send(error);
+            }
+        );
+}
+
+function login(req, res) {
+    res.json(req.user);
+}
+
+function logout(req, res) {
+    req.logout();
+    res.sendStatus(200);
+}
+
+// HELPER METHODS
+
+function localStrategy(username, password, done) {
+    userModel
+        .findUserByCredentials(username, password)
+        .then(
+            function (user) {
+                if (user)
+                    return done(null, user);
+                else
+                    return done(null, false, { message: 'Incorrect password.' });
+            },
+            function (error) {
+                return done(error, false);
+            }
+        );
+}
+
+function serializeUser(user, done) {
+    done(null, user._id);
+}
+
+function deserializeUser(userId, done) {
+    userModel
+        .findUserById(userId)
+        .then(
+            function (user) {
+                done(null, user);
+            },
+            function (error) {
+                done(error, null);
             }
         );
 }
