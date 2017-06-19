@@ -20,7 +20,8 @@
             .when('/assignment/user/:uid/website/:wid/page/:pid/widget', widgetList())
             .when('/assignment/user/:uid/website/:wid/page/:pid/widget/new', widgetNew())
             .when('/assignment/user/:uid/website/:wid/page/:pid/widget/:wgid', widgetEdit())
-            .when('/assignment/user/:uid/website/:wid/page/:pid/widget/:wgid/image-search', widgetImageSearch());
+            .when('/assignment/user/:uid/website/:wid/page/:pid/widget/:wgid/image-search', widgetImageSearch())
+            .otherwise(loginPage());
 
         console.log('Routes Configured!');
     }
