@@ -14,7 +14,6 @@
 
         function init() {
 
-            model.userId = $routeParams['uid'];
             model.websiteId = $routeParams['wid'];
             model.pageId = $routeParams['pid'];
 
@@ -48,7 +47,7 @@
                 .then(
                     function(response) {
 
-                        $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                        $location.url('/assignment/website/' + model.websiteId + '/page');
                     }
                 );
         }
@@ -57,7 +56,7 @@
             pageService.deletePage(model.pageId)
                 .then(
                     function (response) {
-                        $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                        $location.url('/assignment/website/' + model.websiteId + '/page');
                     }
                 );
         }

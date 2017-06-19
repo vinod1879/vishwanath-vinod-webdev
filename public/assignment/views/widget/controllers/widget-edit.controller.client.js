@@ -13,7 +13,6 @@
         init();
 
         function init() {
-            model.userId = $routeParams['uid'];
             model.websiteId = $routeParams['wid'];
             model.pageId = $routeParams['pid'];
             model.widgetId = $routeParams['wgid'];
@@ -30,7 +29,7 @@
             widgetService.updateWidget(model.widgetId, model.widget)
                 .then(
                     function (response) {
-                        $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page/'
+                        $location.url('/assignment/website/' + model.websiteId + '/page/'
                             + model.pageId + '/widget');
                     }
                 );
@@ -40,7 +39,7 @@
             widgetService.deleteWidget(model.widgetId)
                 .then(
                     function (response) {
-                        $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page/'
+                        $location.url('/assignment/website/' + model.websiteId + '/page/'
                             + model.pageId + '/widget');
                     }
                 );

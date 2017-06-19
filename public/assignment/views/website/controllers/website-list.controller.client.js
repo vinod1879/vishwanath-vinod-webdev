@@ -4,7 +4,7 @@
         .module('WebAppMaker')
         .controller('WebsiteListController', websiteListController);
 
-    function websiteListController($routeParams, websiteService) {
+    function websiteListController(websiteService, currentUser) {
 
         var model = this;
         model.getDateString = getDateString;
@@ -12,7 +12,7 @@
         init();
 
         function init() {
-            model.userId = $routeParams['uid'];
+            model.userId = currentUser._id;
             fetchWebsites();
         }
 

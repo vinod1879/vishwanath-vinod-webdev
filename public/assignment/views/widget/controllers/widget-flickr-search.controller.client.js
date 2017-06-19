@@ -13,7 +13,6 @@
         init();
 
         function init() {
-            model.userId = $routeParams['uid'];
             model.websiteId = $routeParams['wid'];
             model.pageId = $routeParams['pid'];
             model.widgetId = $routeParams['wgid'];
@@ -46,7 +45,7 @@
                 .updateWidget(model.widgetId, model.widget)
                 .then(
                     function () {
-                        $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId
+                        $location.url('/assignment/website/' + model.websiteId
                             + '/page/' + model.pageId + '/widget/' + model.widgetId);
                     }
                 );

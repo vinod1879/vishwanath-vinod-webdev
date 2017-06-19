@@ -11,7 +11,6 @@
         init();
 
         function init() {
-            model.userId = $routeParams['uid'];
             model.websiteId = $routeParams['wid'];
             fetchPages();
         }

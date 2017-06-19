@@ -13,7 +13,6 @@
 
         function init() {
 
-            model.userId = $routeParams['uid'];
             model.websiteId = $routeParams['wid'];
             model.pageId = $routeParams['pid'];
 
@@ -37,7 +36,7 @@
                     function (response) {
                         console.log('Creating widget...complete');
                         var widget = response.data;
-                        $location.url('/assignment/user/' + model.userId + '/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
+                        $location.url('/assignment/website/' + model.websiteId + '/page/' + model.pageId + '/widget/' + widget._id);
                     }
                 );
         }
