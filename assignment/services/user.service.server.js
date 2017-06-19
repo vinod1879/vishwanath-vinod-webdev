@@ -1,9 +1,7 @@
 var userModel = require('../model/user/user.model.server');
+var config = require('../../config');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-passport.use(new LocalStrategy(localStrategy));
-passport.serializeUser(serializeUser);
-passport.deserializeUser(deserializeUser);
+configurePassport()
 
 function userService(app) {
 
@@ -14,6 +12,14 @@ function userService(app) {
     app.delete('/api/user/:userId', deleteUser);
 
     app.post('/api/login', passport.authenticate('local'), login);
+    app.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+
+    app.get('/auth/google/callback',
+        passport.authenticate('google', {
+            successRedirect: '/assignment/website',
+            failureRedirect: '/assignment/login'
+        }));
+
     app.post('/api/logout', logout);
     app.post('/api/register', register);
     app.get('/api/authenticate', authenticate);
@@ -190,6 +196,52 @@ function localStrategy(username, password, done) {
         );
 }
 
+function googleStrategy(token, refreshToken, profile, done) {
+
+    userModel
+        .findUserByGoogleId(profile.id)
+        .then(
+            function (user) {
+
+                if (user) {
+                    return done(null, user);
+                }
+                else {
+                    createGoogleUser(token, profile, done);
+                }
+            },
+            function (error) {
+                return done(error, false);
+            }
+        );
+}
+
+function createGoogleUser(token, profile, done) {
+
+    var user = {};
+
+    user.google = {id: profile.id, token: token};
+
+    if (profile.emails.length > 0) {
+        user.username = profile.emails[0].value;
+        user.email = profile.emails[0].value;
+
+    }
+    user.firstName = profile.name.givenName;
+    user.lastName = profile.name.familyName;
+
+    userModel
+        .create(user)
+        .then(
+            function (user) {
+                done(null, user);
+            },
+            function (error) {
+                done(error, false);
+            }
+        );
+}
+
 function serializeUser(user, done) {
     done(null, user._id);
 }
@@ -205,4 +257,15 @@ function deserializeUser(userId, done) {
                 done(error, null);
             }
         );
+}
+
+function configurePassport() {
+    var LocalStrategy = require('passport-local').Strategy;
+    passport.use(new LocalStrategy(localStrategy));
+
+    var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+    passport.use(new GoogleStrategy(config.googleConfig, googleStrategy));
+
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
 }

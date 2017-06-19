@@ -12,6 +12,7 @@ userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
 userModel.addWebsite = addWebsite;
 userModel.removeWebsite = removeWebsite;
+userModel.findUserByGoogleId = findUserByGoogleId;
 
 /**
  * Exports
@@ -71,4 +72,9 @@ function removeWebsite(websiteId) {
                     user.save();
                 }
             });
+}
+
+function findUserByGoogleId(googleId) {
+    return userModel
+        .findOne({'google.id': googleId});
 }
