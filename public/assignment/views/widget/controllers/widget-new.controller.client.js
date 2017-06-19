@@ -29,9 +29,8 @@
         }
 
         function createWidget(widgetType) {
-
             console.log('Creating widget...');
-            widgetService.createWidget(model.pageId, {type: widgetType})
+            widgetService.createWidget(model.pageId, {type: widgetType, name: widgetType.toLowerCase()})
                 .then(
                     function (response) {
                         console.log('Creating widget...complete');

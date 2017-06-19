@@ -28,6 +28,8 @@
         }
 
         function createWebsite() {
+
+            if (!model.website.name) { model.message = '* Website name is required'; return; }
             websiteService.createWebsite(model.userId, model.website)
                 .then(function (response) {
                     $location.url('/assignment/website');

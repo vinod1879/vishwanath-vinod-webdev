@@ -43,6 +43,7 @@
         }
 
         function updatePage() {
+            if (!model.page.name) { model.message = '* Page name cannot be blank'; return; }
             pageService.updatePage(model.pageId, model.page)
                 .then(
                     function(response) {

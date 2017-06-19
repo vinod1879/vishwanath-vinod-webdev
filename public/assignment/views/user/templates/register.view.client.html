@@ -16,9 +16,15 @@
                class="form-control"
                ng-model="repeat"
                placeholder="verify password"/>
-        <a class="btn btn-primary btn-block"
+        <a class="btn btn-primary btn-block wbd-x-space-up"
            href="#" ng-click="model.register(username, password, repeat)">Register</a>
-        <p class="text-center table-bordered">
+        <a href="/auth/google" target="_self" class="btn btn-primary btn-block">
+            <span class="fa fa-google">
+                Login with Google
+            </span>
+
+        </a>
+        <p class="text-center table-bordered wbd-space-up">
             Already registered?<a  href="assignment/login"> Login now! </a>
         </p>
     </form>

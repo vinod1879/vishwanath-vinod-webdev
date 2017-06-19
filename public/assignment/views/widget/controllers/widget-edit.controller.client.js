@@ -26,6 +26,7 @@
         }
 
         function updateWidget() {
+            if (!model.widget.name) { model.message = '* Widget name cannot be blank'; return; }
             widgetService.updateWidget(model.widgetId, model.widget)
                 .then(
                     function (response) {

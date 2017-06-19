@@ -15,15 +15,20 @@
                placeholder="password"/>
 
         <a ng-click="model.login(username, password)"
-           class="btn btn-primary btn-block">
+           class="btn btn-primary btn-block wbd-x-space-up">
             Login
         </a>
 
-        <p class="text-center table-bordered">
+        <a href="/auth/google" target="_self" class="btn btn-primary btn-block">
+            <span class="fa fa-google">
+                Login with Google
+            </span>
+
+        </a>
+
+        <p class="text-center table-bordered wbd-space-up">
             New user?<a  href="assignment/register"> Register now! </a>
         </p>
-        <p class="text-center table-bordered">
-            New user?<a  href="/auth/google" target="_self"> Login with Google! </a>
-        </p>
+
     </form>
 </div>

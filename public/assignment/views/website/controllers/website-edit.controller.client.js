@@ -38,6 +38,7 @@
         }
 
         function updateWebsite() {
+            if (!model.website.name) { model.message = '* Website name cannot be blank'; return; }
             websiteService.updateWebsite(model.websiteId, model.website)
                 .then(
                     function (response) {

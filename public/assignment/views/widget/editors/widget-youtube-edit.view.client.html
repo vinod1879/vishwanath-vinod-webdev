@@ -18,11 +18,12 @@
 </nav>
 
 <div class="container-fluid wbd-page-content col-xs-12">
-
+    <div ng-show="model.message" class="alert alert-info">{{model.message}}</div>
     <label for="name">Name</label>
     <input type="text"
            class="form-control"
            placeholder="Name of youtube widget"
+           ng-model="model.widget.name"
            id="name" />
 
     <label for="text">Text</label>
