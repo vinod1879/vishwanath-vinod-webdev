@@ -1,59 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <title>Web Dev Course Home Page</title>
-
-    <!-- FOR ANGULAR ROUTING -->
-    <base href="/">
-
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-          crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JS -->
-    <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.js"></script>
-
-    <script src="app.js"></script>
-    <script src="app.routes.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Black And White Bootstrap Landing Page / Portfolio</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap and Font Awesome css-->
+    <!-- we use cdn but you can also include local files located in css directory-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Google fonts - Montserrat for headings, Cardo for copy-->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400,700|Cardo:400,400italic,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="home/css/style.default.css" id="theme-stylesheet">
+    <!-- ekko lightbox-->
+    <link rel="stylesheet" href="home/css/ekko-lightbox.css">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="home/css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="favicon.png">
 </head>
-<body ng-app="WebDevApp">
-    <header>
-        <div class="navbar custom-navbar" role="navigation">
-            <div class="container">
-                <ul class="nav navbar-nav">
-                    <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-                    <li><a href="/" class="navbar-brand custom-navbar">CS5610: Web Dev</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/project-home">Project</a></li>
-                    <li><a href="/assignment-home/">Assignment</a></li>
-                    <li><a href="/test-home/">Test MongoDB</a></li>
-                    <li><a href="https://github.com/vinod1879/vishwanath-vinod-webdev">GitHub Repository</a></li>
-                </ul>
+<body data-spy="scroll" data-target="#navigation" data-offset="120">
+<!-- intro-->
+<section id="intro" style="background-image: url('home/img/ein-steig.jpg');" class="intro">
+    <div class="overlay"></div>
+    <div class="content">
+        <div class="container clearfix">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="italic">Hello, World!</p>
+                    <h1>I am Vinod.</h1>
+                    <p>This is my home page for the Web Development Course
+                        at Northeastern University for Summer 2017.
+                    </p>
+                    <p class="italic">You can find my Assignments, Projects, and more below.</p>
+                </div>
             </div>
         </div>
-    </header>
-    <main class="container">
-        <!-- ANGULAR VIEWS -->
-        <div ng-view></div>
-    </main>
+    </div>
+</section>
+<!-- intro end-->
+<!-- navbar-->
+<header class="header">
+    <div class="sticky-wrapper">
+        <div role="navigation" class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-btn btn-sm navbar-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#intro" class="navbar-brand scroll-to italic margin-up-10">Vinod Vishwanath</a>
+                </div>
+                <div id="navigation" class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#intro">Home</a></li>
+                        <li><a href="#about">About </a></li>
+                        <li><a href="#services">Links</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- /.navbar-->
+<!-- about-->
+<section id="about" class="text">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="heading">About me</h2>
+                <p class="lead">I'm a graduate student at Northeastern University.
+                    <div>I'm majoring in Computer Science at the College of Computer and Information Science.
+                        My concentrations are Artificial Intelligence and Information Retrieval.</div>
+                </p>
+            </div>
+            <div class="col-md-5 col-md-offset-1">
+                <p><img src="home/img/IMG_7572.JPG" alt="" class="img-responsive img-circle"></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- about end-->
+<!-- Services-->
+<section id="services" style="background-color: #eee">
+    <div class="container">
+        <div class="row services">
+            <div class="col-md-12">
+                <h2 class="heading">Links</h2>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="box">
+                            <div class="icon"><i class="fa fa-desktop"></i></div>
+                            <h4>Assignments</h4>
+                            <p>Find my assignments for CS5610
+                                <a href="assignment/index.html" target="_blank"><u>here</u></a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="box">
+                            <div class="icon"><i class="fa fa-github"></i></div>
+                            <h4>GitHub</h4>
+                            <p>My GitHub repository can be found
+                                <a href="https://github.com/vinod1879/vishwanath-vinod-webdev" target="_blank"><u>here</u></a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="box">
+                            <div class="icon"><i class="fa fa-globe"></i></div>
+                            <h4>Project</h4>
+                            <p>My Web Dev project is
+                                <a href="https://student-forum.herokuapp.com/" target="_blank"><u>here</u></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services end-->
+
+<!-- contact-->
+<section id="contact" style="background-color: #fff;" class="text-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="heading">Contact</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Contact me on the Social Media platforms below</p>
+                        <p class="social">
+                            <a href="https://www.facebook.com/vinodv1879" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="https://stackoverflow.com/users/1750246/vinod-vishwanath" class="stack-overflow"><i class="fa fa-stack-overflow"></i></a>
+                            <a href="https://github.com/vinod1879" title="" class="gplus"><i class="fa fa-github"></i></a>
+                            <a href="mailto:gmvinodv@gmail.com" class="email"><i class="fa fa-envelope"></i></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer style="background-color: #111;" class="section-inverse">
+    <div class="container">
+        <div class="row copyright">
+            <div class="col-md-6">
+                <p>&copy;2017 Vinod Vishwanath</p>
+            </div>
+            <div class="col-md-6">
+                <p class="credit">Template Credit: <a href="https://bootstrapious.com/tutorials">Bootstrapious</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Javascript files-->
+<!-- jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="home/js/jquery-1.11.0.min.js"><\/script>')</script>
+<!-- Bootstrap CDN-->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<!-- jQuery Cookie - For Demo Purpose-->
+<script src="home/js/jquery.cookie.js"></script>
+<!-- Lightbox-->
+<script src="home/js/ekko-lightbox.js"> </script>
+<!-- Sticky + Scroll To scripts for navbar-->
+<script src="home/js/jquery.sticky.js"></script>
+<script src="home/js/jquery.scrollTo.min.js"></script>
+<!-- google maps-->
+
+<!-- main script-->
+<script src="home/js/front.js"></script>
 </body>
 </html>
